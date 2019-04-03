@@ -56,6 +56,7 @@ const static byte charTable[128] = {
     B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000,B00000000
 };
 
+//Added the '!' to the alphabitmap
 const static byte alphabetBitmap[42][6]={
 	{0x7E,0x81,0x81,0x81,0x7E,0x0}, //0
 	{0x4,0x82,0xFF,0x80,0x0,0x0},  //1
