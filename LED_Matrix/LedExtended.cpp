@@ -23,9 +23,10 @@ int LedControlExtended::getCharArrayPositionExtended(char input){
      if ((input =='(')) return  14;  //replace by '�'
      if (input=='!') return 15;	 
 	 if (input=='\'') return 16;
+     if(input=='=') return 16;//Added in the position for the '='
      if ((input >='0')&&(input <='9')) return (input-'0');
-     if ((input >='A')&&(input <='Z')) return (input-'A' + 17);
-     if ((input >='a')&&(input <='z')) return (input-'a' + 17);     
+     if ((input >='A')&&(input <='Z')) return (input-'A' + 18);
+     if ((input >='a')&&(input <='z')) return (input-'a' + 18);     
      return 13;
 } 
 
@@ -58,7 +59,7 @@ char* getDisplayString(char* inputString, int numChar)
  * Method for scrolling text across one display, would be possibly to modify it to work with multiple.
  * TODO: Modify the method to use the extended bitmap to allow for different sized characters
  */
-void LedControlExtended::writeScrollingString(int mtx, char* inputString, long delayMS) {
+void LedControlExtended::writeScrollingStringOld(int mtx, char* inputString, long delayMS) {
 
   int numChar = strlen(inputString);
   char* displayString = getDisplayString(inputString, numChar);

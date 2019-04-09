@@ -27,7 +27,7 @@ void setup()
 
 void loop()
 {
-  lc.writeScrollingString(0, "Welcome to Super Mario World", 68); //sending characters to display
+  lc.writeScrollingStringOld(0, "Welcome to super mario world", 68); //sending characters to display
   lc.clearAll();//clearing the display
   delay(1000);
 }
