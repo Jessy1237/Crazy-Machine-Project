@@ -64,8 +64,10 @@ char* getDisplayString(char* inputString)
    @Date 10/04/2019
 
    Method for scrolling text across one display. The method uses static variables to allow for quick response times to allow for polling in the main loop.
+   The return bool allows for switching of input strings once a string has been completely scrolled as it will return true.
+   @return true if the string has been completely scrolled across the screen.
 */
-void LedControlExtended::writeScrollingString(int mtx, char* inputString, long delayMS)
+bool LedControlExtended::writeScrollingString(int mtx, char* inputString, long delayMS)
 {
 
   static char* scrollString = NULL;
@@ -73,6 +75,7 @@ void LedControlExtended::writeScrollingString(int mtx, char* inputString, long d
   static int charPos = 0;
   static int currChar = 0;
   static int numChar = 0;
+  bool finishedCycle = false;
 
   //Need to reset the positioning if between polling the string was changed or if we've finished scrolling the current string.
   if (oldInputString != inputString || currChar >= numChar)
@@ -136,6 +139,12 @@ void LedControlExtended::writeScrollingString(int mtx, char* inputString, long d
     clearAll();
   }
 
+  if(currChar >= numChar)
+  {
+    finishedCycle = true;
+  }
+
+  return finishedCycle;
 }
 
 /*

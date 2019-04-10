@@ -78,6 +78,8 @@ class LedControlExtended : public LedControl
        @Date 10/04/2019
 
        Method for scrolling text across one display. The method uses static variables to allow for quick response times to allow for polling in the main loop.
+       The return bool allows for switching of input strings once a string has been completely scrolled as it will return true.
+       @return true if the string has been completely scrolled across the screen.
     */
-    void writeScrollingString(int mtx, char * inputString, long delayMS);
+    bool writeScrollingString(int mtx, char * inputString, long delayMS);
 };
