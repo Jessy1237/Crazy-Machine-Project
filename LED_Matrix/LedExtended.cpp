@@ -63,8 +63,7 @@ char* getDisplayString(char* inputString)
    @Author Jesse Sieunarine
    @Date 10/04/2019
 
-   Method for scrolling text across one display, would be possibly to modify it to work with multiple.
-   TODO: Modify the method to use the extended bitmap to allow for different sized characters
+   Method for scrolling text across one display. The method uses static variables to allow for quick response times to allow for polling in the main loop.
 */
 void LedControlExtended::writeScrollingString(int mtx, char* inputString, long delayMS)
 {

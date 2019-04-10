@@ -54,8 +54,30 @@ class LedControlExtended : public LedControl
 {
   public:
     LedControlExtended(int dataPin, int clkPin, int csPin, int numDevices = 1);
-    //Returns the array number in the alphabetBitmap array
+
+    /*
+       @Author Jesse Sieunarine
+       @Date 2/04/2019
+
+       Method for getting the index value of the char in the extended bitmap
+    */
     int getCharArrayPositionExtended(char c);
+
+    /*
+      @Author Jesse Sieunarine
+      @Date 2/04/2019
+
+      Method for scrolling text across one display, would be possibly to modify it to work with multiple.
+
+      DEPRECATED METHOD
+    */
     void writeScrollingStringOld(int mtx, char * inputString, long delayMS);
+
+    /*
+       @Author Jesse Sieunarine
+       @Date 10/04/2019
+
+       Method for scrolling text across one display. The method uses static variables to allow for quick response times to allow for polling in the main loop.
+    */
     void writeScrollingString(int mtx, char * inputString, long delayMS);
 };
