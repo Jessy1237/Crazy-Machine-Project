@@ -29,7 +29,7 @@ void setup() {
   // pinMode(2, INPUT);
   
   //Initialize the SdCard.
-  
+  setupMusic();
 }
 
 //------------------------------------------------------------------------------
