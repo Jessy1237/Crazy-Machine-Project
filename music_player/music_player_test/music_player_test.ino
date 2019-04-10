@@ -1,4 +1,11 @@
 /**
+ * \file MP3Shield_Library_Demo.ino
+ *
+ * \brief Example sketch of using the MP3Shield Arduino driver, demonstrating all methods and functions.
+ * \remarks comments are implemented with Doxygen Markdown format
+ *
+ * \author Bill Porter
+ * \author Michael P. Flaga
  *
  * This sketch listens for commands from a serial terminal (like the Serial
  * Monitor in the Arduino IDE). If it sees 1-9 it will try to play an MP3 file
@@ -56,7 +63,8 @@ void setup() {
 
   Serial.begin(115200);
 
-
+  // Assign the pin for an input device
+  // pinMode(2, INPUT);
   
   //Initialize the SdCard.
   if(!sd.begin(SD_SEL, SPI_FULL_SPEED)) sd.initErrorHalt();
@@ -75,6 +83,7 @@ void setup() {
   }
 #endif
 
+  Serial.println(F("Arduino Music Selector:"));
   help();
 }
 
@@ -102,45 +111,38 @@ void loop() {
   MP3player.available();
 #endif
 
-  // Assign the pins for an input device
-  int state001 = 2;
-  int state010 = 4;
-  int state100 = 5;
-  pinMode(state001, INPUT);
-  pinMode(state010, INPUT);
-  pinMode(state100, INPUT);
-  
-
-  // Code for reading the state based off digital pins
-    if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == LOW) {
-      parse_menu(1);
-      
-    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == LOW) {
-      parse_menu(2);
-      
-    } else if (digitalRead(state001) == LOW && digitalRead(state010) == HIGH && digitalRead(state100) == LOW) {
-      parse_menu(3);
-      
-    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == HIGH && digitalRead(state100) == LOW) {
-      parse_menu(4);
-      
-    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == HIGH) {
-      parse_menu(5);
-      
-    } else if (digitalRead(state001) == LOW && digitalRead(state010) == HIGH && digitalRead(state100) == HIGH) {
-      parse_menu(6);
-      
-    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == HIGH && digitalRead(state100) == HIGH) {
-      parse_menu(7);
-      
-    }
-    
-
-
-
-
-
-
+//  // Assign the pins for an input device
+//  int state001 = 2;
+//  int state010 = 4;
+//  int state100 = 5;
+//  pinMode(state001, INPUT);
+//  pinMode(state010, INPUT);
+//  pinMode(state100, INPUT);
+//  
+//
+//  // Code for reading the state based off digital pins
+//    if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == LOW) {
+//      parse_menu(1);
+//      
+//    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == LOW) {
+//      parse_menu(2);
+//      
+//    } else if (digitalRead(state001) == LOW && digitalRead(state010) == HIGH && digitalRead(state100) == LOW) {
+//      parse_menu(3);
+//      
+//    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == HIGH && digitalRead(state100) == LOW) {
+//      parse_menu(4);
+//      
+//    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == HIGH) {
+//      parse_menu(5);
+//      
+//    } else if (digitalRead(state001) == LOW && digitalRead(state010) == HIGH && digitalRead(state100) == HIGH) {
+//      parse_menu(6);
+//      
+//    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == HIGH && digitalRead(state100) == HIGH) {
+//      parse_menu(7);
+//      
+//    }
 
   if(Serial.available()) {
     // parse_menu(digitalRead(PIN_NO)); // get input from attached input at PIN_NO
@@ -158,13 +160,11 @@ void loop() {
  * MP3player library functions and features then displaying a brief menu and
  * prompting for next input command.
  */
+
 void parse_menu(byte key_command) {
 
-  uint8_t result; // result code from some function as to be tested at later time.
-
-  // Note these buffer may be desired to exist globably.
-  // but do take much space if only needed temporarily, hence they are here.
-  char title[30]; // buffer to contain the extract the Title from the current filehandles
+  uint8_t result;
+  char title[30];
 
   Serial.print(F("Received command: "));
   Serial.write(key_command);
@@ -180,10 +180,6 @@ void parse_menu(byte key_command) {
     //convert ascii numbers to real numbers
     key_command = key_command - 48;
 
-#if USE_MULTIPLE_CARDS
-    sd.chvol(); // assign desired sdcard's volume.
-#endif
-    //tell the MP3 Shield to play a track
     result = MP3player.playTrack(key_command);
 
     //check result, see readme for error codes.
@@ -192,14 +188,11 @@ void parse_menu(byte key_command) {
       Serial.print(result);
       Serial.println(F(" when trying to play track"));
     } else {
-
       Serial.println(F("Playing:"));
 
       //we can get track info by using the following functions and arguments
       //the functions will extract the requested information, and put it in the array we pass in
       MP3player.trackTitle((char*)&title);
-
-      //print out the arrays of track information
       Serial.write((byte*)&title, 30);
       Serial.println();
     }
@@ -229,60 +222,23 @@ void parse_menu(byte key_command) {
     Serial.print(mp3_vol.byte[1]>>1, 1);
     Serial.println(F("[dB]"));
 
-  
+  // if p, pause track
   } else if(key_command == 'p') {
     if( MP3player.getState() == playback) {
       MP3player.pauseMusic();
       Serial.println(F("Pausing"));
-    } else if( MP3player.getState() == paused_playback) {
-      MP3player.resumeMusic();
-      Serial.println(F("Resuming"));
     } else {
       Serial.println(F("Not Playing!"));
     }
-
-  
+    
+  // if r, resume track
   } else if(key_command == 'r') {
-    MP3player.resumeMusic(2000);
-
-
-  } else if(key_command == 'S') {
-    Serial.println(F("Current State of VS10xx is."));
-    Serial.print(F("isPlaying() = "));
-    Serial.println(MP3player.isPlaying());
-
-    Serial.print(F("getState() = "));
-    switch (MP3player.getState()) {
-    case uninitialized:
-      Serial.print(F("uninitialized"));
-      break;
-    case initialized:
-      Serial.print(F("initialized"));
-      break;
-    case deactivated:
-      Serial.print(F("deactivated"));
-      break;
-    case loading:
-      Serial.print(F("loading"));
-      break;
-    case ready:
-      Serial.print(F("ready"));
-      break;
-    case playback:
-      Serial.print(F("playback"));
-      break;
-    case paused_playback:
-      Serial.print(F("paused_playback"));
-      break;
-    case testing_memory:
-      Serial.print(F("testing_memory"));
-      break;
-    case testing_sinewave:
-      Serial.print(F("testing_sinewave"));
-      break;
+    if( MP3player.getState() == paused_playback) {
+      MP3player.resumeMusic();
+      Serial.println(F("Resuming"));
+    } else {
+      Serial.println(F("No Track to Resume!"));
     }
-    Serial.println();
-
     
   } else if(key_command == 'g') {
     int32_t offset_ms = 20000; // Note this is just an example, try your own number.
@@ -290,11 +246,6 @@ void parse_menu(byte key_command) {
     Serial.print(offset_ms, DEC);
     Serial.println(F("[milliseconds]"));
     result = MP3player.skipTo(offset_ms);
-    if(result != 0) {
-      Serial.print(F("Error code: "));
-      Serial.print(result);
-      Serial.println(F(" when trying to skip track"));
-    }
 
   } else if(key_command == 'k') {
     int32_t offset_ms = -1000; // Note this is just an example, try your own number.
@@ -302,29 +253,18 @@ void parse_menu(byte key_command) {
     Serial.print(offset_ms, DEC);
     Serial.println(F("[milliseconds]"));
     result = MP3player.skip(offset_ms);
-    if(result != 0) {
-      Serial.print(F("Error code: "));
-      Serial.print(result);
-      Serial.println(F(" when trying to skip track"));
-    }
 
-  } else if(key_command == 'R') {
-    MP3player.stopTrack();
-    MP3player.vs_init();
-    Serial.println(F("Reseting VS10xx chip"));
-
+  // if h, print help
   } else if(key_command == 'h') {
     help();
-  
+
+  // if any other command, pring error
   } else {
     Serial.println(F("ERROR: Invalid Command."));
+    
   }
   // print prompt after key stroke has been processed.
-  Serial.print(F("Enter s,1-9,+,-,d,p,S"));
-#if !defined(__AVR_ATmega32U4__)
-  Serial.print(F(",r,g,k,M"));
-#endif
-  Serial.println(F(",h :"));
+  Serial.print(F("Enter: 1-9, s, p, r, +, -, g, k, h\n"));
 }
 
 //------------------------------------------------------------------------------
@@ -334,21 +274,13 @@ void parse_menu(byte key_command) {
  * Prints a full menu of the commands available along with descriptions.
  */
 void help() {
-  Serial.println(F("Arduino SFEMP3Shield Library Example:"));
-  Serial.println(F(" courtesy of Bill Porter & Michael P. Flaga"));
   Serial.println(F("COMMANDS:"));
   Serial.println(F(" [1-9] to play a track"));
   Serial.println(F(" [s] to stop playing"));
+  Serial.println(F(" [p] to pause"));
+  Serial.println(F(" [r] to resume"));
   Serial.println(F(" [+ or -] to change volume"));
-  Serial.println(F(" [p] to pause."));
-
-#if !defined(__AVR_ATmega32U4__)
-
-  Serial.println(F(" [R] Resets and initializes VS10xx chip."));
   Serial.println(F(" [g] Skip to a predetermined offset of ms in current track."));
   Serial.println(F(" [k] Skip a predetermined number of ms in current track."));
-  Serial.println(F(" [r] resumes play from 2s from begin of file"));
-
-#endif
-  Serial.println(F(" [h] this help"));
+  Serial.println(F(" [h] to see commands"));
 }
