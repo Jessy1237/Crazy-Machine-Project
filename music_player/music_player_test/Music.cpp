@@ -10,23 +10,32 @@
 */
 
 /**
- * \brief Object instancing the SdFat library.
- *
- * principal object for handling all SdCard functions.
- */
+   \brief Object instancing the SdFat library.
+
+   principal object for handling all SdCard functions.
+*/
 static SdFat sd;
 
 /**
- * \brief Object instancing the SFEMP3Shield library.
- *
- * principal object for handling all the attributes, members and functions for the library.
- */
+   \brief Object instancing the SFEMP3Shield library.
+
+   principal object for handling all the attributes, members and functions for the library.
+*/
 static SFEMP3Shield MP3player;
 
 static uint8_t result;
 
 void setupMusic()
 {
+
+  // Below is only needed if not interrupt driven. Safe to remove if not using.
+#if defined(USE_MP3_REFILL_MEANS) \
+    && ( (USE_MP3_REFILL_MEANS == USE_MP3_SimpleTimer) \
+    ||   (USE_MP3_REFILL_MEANS == USE_MP3_Polled)      )
+
+  MP3player.available();
+#endif
+
   if (!sd.begin(SD_SEL, SPI_FULL_SPEED)) sd.initErrorHalt();
   // depending upon your SdCard environment, SPI_HAVE_SPEED may work better.
   if (!sd.chdir("/")) sd.errorHalt("sd.chdir");
