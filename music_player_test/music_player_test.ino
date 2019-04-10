@@ -56,8 +56,7 @@ void setup() {
 
   Serial.begin(115200);
 
-  // Assign the pin for an input device
-  // pinMode(2, INPUT);
+
   
   //Initialize the SdCard.
   if(!sd.begin(SD_SEL, SPI_FULL_SPEED)) sd.initErrorHalt();
@@ -102,6 +101,46 @@ void loop() {
 
   MP3player.available();
 #endif
+
+  // Assign the pins for an input device
+  int state001 = 2;
+  int state010 = 4;
+  int state100 = 5;
+  pinMode(state001, INPUT);
+  pinMode(state010, INPUT);
+  pinMode(state100, INPUT);
+  
+
+  // Code for reading the state based off digital pins
+    if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == LOW) {
+      parse_menu(1);
+      
+    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == LOW) {
+      parse_menu(2);
+      
+    } else if (digitalRead(state001) == LOW && digitalRead(state010) == HIGH && digitalRead(state100) == LOW) {
+      parse_menu(3);
+      
+    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == HIGH && digitalRead(state100) == LOW) {
+      parse_menu(4);
+      
+    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == LOW && digitalRead(state100) == HIGH) {
+      parse_menu(5);
+      
+    } else if (digitalRead(state001) == LOW && digitalRead(state010) == HIGH && digitalRead(state100) == HIGH) {
+      parse_menu(6);
+      
+    } else if (digitalRead(state001) == HIGH && digitalRead(state010) == HIGH && digitalRead(state100) == HIGH) {
+      parse_menu(7);
+      
+    }
+    
+
+
+
+
+
+
 
   if(Serial.available()) {
     // parse_menu(digitalRead(PIN_NO)); // get input from attached input at PIN_NO
