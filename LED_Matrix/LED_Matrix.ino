@@ -1,4 +1,3 @@
-
 #include "LedExtended.h"
 
 #define DATA_PIN 2
@@ -11,7 +10,6 @@ const char* ANOTHER_MSG = "another string";
 
 LedControlExtended lc = LedControlExtended(DATA_PIN, CLK_PIN, CS_PIN, NBR_MTX);
 char* displayString = NULL;
-int stringLen = 0;
 int i = 0;
 
 void setup()

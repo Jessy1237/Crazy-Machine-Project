@@ -20,9 +20,6 @@
 
 #include "Music.h"
 void setup() {
-
-  uint8_t result; //result code from some function as to be tested at later time.
-
   Serial.begin(115200);
 
   // Assign the pin for an input device
