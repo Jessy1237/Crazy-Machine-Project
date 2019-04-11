@@ -1,9 +1,9 @@
 #include "LedExtended.h"
 
-#define DATA_PIN 2
-#define CS_PIN  3
-#define CLK_PIN 4
-#define NBR_MTX 1 //number of matrices attached is one
+#define DATA_PIN A0
+#define CS_PIN  A1
+#define CLK_PIN A2
+#define NBR_MTX 5 //number of matrices attached is one
 
 const char* WELCOME_MSG = "Welcome to super mario world!";
 const char* ANOTHER_MSG = "another string";
@@ -45,7 +45,7 @@ void loop()
     {
     i = 0;
     }*/
-  if (lc.writeScrollingString(0, displayString, 69)) //sending characters to display
+  if (lc.writeScrollingString(0, displayString, 5, 69)) //sending characters to display
   {
     if (displayString == WELCOME_MSG) //above statement returns true once the string has finished scrolling so time to switch displays
     {
