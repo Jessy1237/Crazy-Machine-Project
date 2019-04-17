@@ -157,44 +157,6 @@ void LedControl::setColumn(int addr, int col, byte value) {
   }
 }
 
-void LedControl::setDigit(int addr, int digit, byte value, boolean dp) {
-  int offset;
-  byte v;
-
-  if (addr < 0 || addr >= maxDevices)
-    return;
-  if (digit < 0 || digit > 7 || value > 15)
-    return;
-  offset = addr * 8;
-  v = charTable[value];
-  if (dp)
-    v |= B10000000;
-  status[offset + digit] = v;
-  spiTransfer(addr, digit + 1, v);
-
-}
-
-void LedControl::setChar(int addr, int digit, char value, boolean dp) {
-  int offset;
-  byte index, v;
-
-  if (addr < 0 || addr >= maxDevices)
-    return;
-  if (digit < 0 || digit > 7)
-    return;
-  offset = addr * 8;
-  index = (byte)value;
-  if (index > 127) {
-    //nothing define we use the space char
-    value = 32;
-  }
-  v = charTable[index];
-  if (dp)
-    v |= B10000000;
-  status[offset + digit] = v;
-  spiTransfer(addr, digit + 1, v);
-}
-
 void LedControl::spiTransfer(int addr, volatile byte opcode, volatile byte data) {
   //Create an array with the data to shift out
   int offset = addr * 2;
@@ -212,37 +174,4 @@ void LedControl::spiTransfer(int addr, volatile byte opcode, volatile byte data)
     shiftOut(LEDCONTROL_SPI_MOSI, LEDCONTROL_SPI_CLK, MSBFIRST, spidata[i - 1]);
   //latch the data onto the display
   digitalWrite(LEDCONTROL_SPI_CS, HIGH);
-}
-
-int LedControl::getCharArrayPosition(char input) {
-  if ((input == ' ') || (input == '+')) return 10;
-  if (input == ':') return 11;
-  if (input == '-') return 12;
-  if (input == '.') return 13;
-  if ((input == '(')) return  14; //replace by '�'
-  if (input == '!') return 15;	 //Added in the position for the '!'
-  if (input == '=') return 16; //Added in the position for the '='
-  if ((input >= '0') && (input <= '9')) return (input - '0');
-  if ((input >= 'A') && (input <= 'Z')) return (input - 'A' + 17);
-  if ((input >= 'a') && (input <= 'z')) return (input - 'a' + 17);
-  return 13;
-}
-
-void LedControl::writeString(int mtx, char * displayString) {
-  while ( displayString[0] != 0) {
-    char c = displayString[0];
-    int pos = getCharArrayPosition( c);
-    displayChar(mtx, pos);
-    delay(300);
-    clearAll();
-    displayString++;
-  }
-}
-
-
-
-void LedControl::displayChar(int matrix, int charIndex) {
-  for (int i = 0; i < 6; i++) {
-    setRow(matrix, i, alphabetBitmap[charIndex][i]);
-  }
 }

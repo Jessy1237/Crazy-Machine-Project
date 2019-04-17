@@ -17,12 +17,19 @@
 #include <SimpleTimer.h>
 #endif
 
-/**
-   \brief Object instancing the SFEMP3Shield library.
+#define NBR_TRACKS 10
+#define NBR_PAUSABLE_TRACKS 2
 
-   principal object for handling all the attributes, members and functions for the library.
-*/
-static SFEMP3Shield MP3player;
+#define HERE_WE_GO 1
+#define WARP_PIPE 2
+#define UNDERGROUND 3
+#define SUPER_STAR 4
+#define ENEMY_DEATH 5
+#define WAAH 6
+#define OOF 7
+#define SO_LONG_BOWSER 8
+#define OUTRO 9
+#define THANKS_FOR_PLAYING 10
 
 /**
    \brief Setup the Arduino Chip's feature for our use.
@@ -34,19 +41,10 @@ static SFEMP3Shield MP3player;
 */
 void setupMusic();
 
-/**
-   \brief Decode the Menu.
+void stopMusic();
 
-   Parses through the characters of the users input, executing corresponding
-   MP3player library functions and features then displaying a brief menu and
-   prompting for next input command.
-*/
+void playMusic(int track);
 
-void parse_menu(byte key_command);
+char* getTrackTitle();
 
-/**
-   \brief Print Help Menu.
-
-   Prints a full menu of the commands available along with descriptions.
-*/
-void help();
+void resetTrackPositions();

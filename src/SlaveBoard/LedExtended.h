@@ -64,16 +64,6 @@ class LedControlExtended : public LedControl
     int getCharArrayPositionExtended(char c);
 
     /*
-      @Author Jesse Sieunarine
-      @Date 2/04/2019
-
-      Method for scrolling text across one display, would be possibly to modify it to work with multiple.
-
-      DEPRECATED METHOD
-    */
-    void writeScrollingStringOld(int mtx, char * inputString, long delayMS);
-
-    /*
        @Author Jesse Sieunarine
        @Date 10/04/2019
 

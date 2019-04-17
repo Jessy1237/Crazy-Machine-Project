@@ -19,18 +19,18 @@
 LedControlExtended lc = LedControlExtended(DATA_PIN, CLK_PIN, CS_PIN, NBR_MTX);
 char* displayString = NULL;
 
-int prevState = -1;
+short prevState = -1;
 long numCycles = 0;
-int numCoins = 0;
-int numLifes = 2;
+short numCoins = 0;
+short numLifes = 2;
 
-void neutralState(int state, int prevState);
-void aboveGroundState(int state, int prevState);
-void superStarState(int state, int prevState);
-void elevatorToFunnelState(int state, int prevState);
-void funnelState(int state, int prevState);
-void finalElevatorState(int state, int prevState);
-void finishedState(int state, int prevState);
+void neutralState(short state, short prevState);
+void aboveGroundState(short state, short prevState);
+void superStarState(short state, short prevState);
+void elevatorToFunnelState(short state, short prevState);
+void funnelState(short state, short prevState);
+void finalElevatorState(short state, short prevState);
+void finishedState(short state, short prevState);
 
 void setup()
 {
@@ -58,7 +58,7 @@ void setup()
 
 void loop()
 {
-  int state = digitalRead(STATE_PIN2) * 4 + digitalRead(STATE_PIN1) * 2 + digitalRead(STATE_PIN0);
+  short state = digitalRead(STATE_PIN2) * 4 + digitalRead(STATE_PIN1) * 2 + digitalRead(STATE_PIN0);
 
   switch (state)
   {
@@ -92,134 +92,138 @@ void loop()
   prevState = state;
 }
 
-void neutralState(int state, int prevState)
+void neutralState(short state, short prevState)
 {
   if (prevState != state) //Here we do a reset to new state 0 i.e. things to run once per state change
   {
     displayString = PRESS_START_MSG;
-    //stopMusic()
+    stopMusic();
     numCycles = 0;
     numCoins = 0;
     numLifes = 2;
+    resetTrackPositions();
   }
 
   //Here we write things that need to happen every cycle in a state
   lc.writeScrollingString(0, NBR_MTX, displayString, 69);
 }
 
-void aboveToUndergroundState(int state, int prevState)
+void aboveToUndergroundState(short state, short prevState)
 {
   if (prevState != state)
   {
-    //stopMusic();
+    stopMusic();
     displayString = WELCOME_MSG;
-    //playMusic(HERE_WE_GO);
+    playMusic(HERE_WE_GO);
     numCycles = 0;
   }
 
   if (numCycles == 1000)
   {
-    //playMusic(WARP_PIPE);
+    playMusic(WARP_PIPE);
   }
   else if (numCycles == 2000)
   {
-    //playMusic(UNDERGROUND);
+    playMusic(UNDERGROUND);
   }
 
   lc.writeScrollingString(0, NBR_MTX, displayString, 69);
 }
 
-void superStarState(int state, int prevState)
+void superStarState(short state, short prevState)
 {
   if (prevState != state)
   {
-    //stopMusic();
-    //playMusic(SUPER_STAR);
+    stopMusic();
+    playMusic(SUPER_STAR);
     numCycles = 0;
   }
 
   if (numCycles == 1000)
   {
-    //stopMusic();
-    //playMusic(ENEMY_DEATH);
+    stopMusic();
+    playMusic(ENEMY_DEATH);
     numCoins++;
   }
   else if (numCycles == 1250)
   {
-    //stopMusic();
-    //playMusic(SUPER_STAR);
+    stopMusic();
+    playMusic(SUPER_STAR);
   }
 
   //lc.displaySuperStar();
   //lc.displayPlayerStats(numLifes, numCoins);
 }
 
-void elevatorToFunnelState(int state, int prevState)
+void elevatorToFunnelState(short state, short prevState)
 {
   if (prevState != state) //Here we do a reset to new state 1 i.e. things to run once per state change
   {
-    //stopMusic();
-    //playMusic(ENEMY_DEATH);
+    stopMusic();
+    playMusic(ENEMY_DEATH);
     numCoins++;
     numCycles = 0;
   }
 
   if (numCycles == 250)
   {
-    //stopMusic();
-    //playMusic(UNDERGROUND);
+    stopMusic();
+    playMusic(UNDERGROUND);
   }
 
   //lc.displayPlayerStats(numLifes, numCoins);
 }
 
-void funnelState(int state, int prevState)
+void funnelState(short state, short prevState)
 {
   if (prevState != state) //Here we do a reset to new state 1 i.e. things to run once per state change
   {
-    //stopMusic();
+    stopMusic();
     numCycles = 0;
   }
 
-  if(numCycles == 1000)
+  if (numCycles == 1000)
   {
-    //playMusic(WAAH);
+    playMusic(WAAH);
   }
-  else if(numCycles == 4000)
+  else if (numCycles == 4000)
   {
-    //stopMusic();
-    //playMusic(OOF);
+    stopMusic();
+    playMusic(OOF);
   }
 }
 
-void finalElevatorState(int state, int prevState)
+void finalElevatorState(short state, short prevState)
 {
   if (prevState != state) //Here we do a reset to new state 1 i.e. things to run once per state change
   {
-    //stopMusic();
-    //playMusic(SO_LONG_BOWSER);
+    stopMusic();
+    playMusic(SO_LONG_BOWSER);
     numCycles = 0;
     displayString = CONGRATS_MSG;
   }
 
-  if(numCycles >= 1000)
+  if (numCycles >= 1000)
   {
     lc.writeScrollingString(0, NBR_MTX, displayString, 69);
   }
 
-  if(numCycles == 2000) //Possibly combine this music file with the so long bowser
+  if (numCycles == 2000) //Possibly combine this music file with the so long bowser
   {
-    //stopMusic();
-    //playMusic(OUTRO);
+    stopMusic();
+    playMusic(OUTRO);
   }
 }
 
-void finishedState(int state, int prevState)
+void finishedState(short state, short prevState)
 {
   if (prevState != state) //Here we do a reset to new state 1 i.e. things to run once per state change
   {
-    //stopMusic();
-    //playMusic(THANKS_FOR_PLAYING);
+    stopMusic();
+    playMusic(THANKS_FOR_PLAYING);
     numCycles = 0;
+    displayString = CONGRATS_MSG;
   }
+
+  lc.writeScrollingString(0, NBR_MTX, displayString, 69);
 }

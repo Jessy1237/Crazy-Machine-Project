@@ -42,7 +42,7 @@ char* getDisplayString(char* inputString, int numDevices)
 
   if (inputString != NULL)
   {
-    int numChar = strlen(inputString);
+    short numChar = strlen(inputString);
     displayString = (char*)malloc(sizeof(char) * (numChar + 4 * numDevices));
 
     for (int i = 0; i < numDevices * 2; i++)
@@ -77,9 +77,9 @@ bool LedControlExtended::writeScrollingString(int mtx, int numDevices, char* inp
 
   static char* scrollString = NULL;
   static char* oldInputString = NULL;
-  static int charPos = 0;
-  static int currChar = 0;
-  static int numChar = 0;
+  static short charPos = 0;
+  static short currChar = 0;
+  static short numChar = 0;
   bool finishedCycle = false;
 
   //Need to reset the positioning if between polling the string was changed or if we've finished scrolling the current string.
@@ -103,13 +103,13 @@ bool LedControlExtended::writeScrollingString(int mtx, int numDevices, char* inp
 
   if (currChar < numChar && scrollString != NULL) //As we add a buffer of 2 space characters to each side of the string but don't want to complete scrolling the last space otherwise we have a memory leak as there is no next char to display
   {
-    int charNum = currChar; //The char we want to display the rows from
-    int arrayPos = getCharArrayPositionExtended(scrollString[charNum]); //the position in the aplabetbitmap
-    int len = alphabetBitmapExtended[arrayPos][0]; //The first element in the bitmap is the length of that array
-    int shiftLeft = charPos % len;
-    int shiftRight = 0;
-    int index = shiftLeft;
-    int i = charPos;
+    short charNum = currChar; //The char we want to display the rows from
+    short arrayPos = getCharArrayPositionExtended(scrollString[charNum]); //the position in the aplabetbitmap
+    short len = alphabetBitmapExtended[arrayPos][0]; //The first element in the bitmap is the length of that array
+    short shiftLeft = charPos % len;
+    short shiftRight = 0;
+    short index = shiftLeft;
+    short i = charPos;
 
     //Sends the data to the LED Matrix row by row
     for (int j = 0; j < 8 * numDevices; j++)
@@ -150,67 +150,4 @@ bool LedControlExtended::writeScrollingString(int mtx, int numDevices, char* inp
   }
 
   return finishedCycle;
-}
-
-/*
-   @Author Jesse Sieunarine
-   @Date 2/04/2019
-
-   Method for scrolling text across one display, would be possibly to modify it to work with multiple.
-   TODO: Modify the method to use the extended bitmap to allow for different sized characters
-*/
-void LedControlExtended::writeScrollingStringOld(int mtx, char* inputString, long delayMS)
-{
-
-  int numChar = strlen(inputString);
-  char* displayString = getDisplayString(inputString, 1);
-  int charPos = 0;
-  int currChar = 0;
-
-  while (currChar < numChar + 2) //As we add a buffer of 2 space characters to each side of the string but don't want to complete scrolling the last space otherwise we have a memory leak as there is no next char to display
-  {
-    int charNum = currChar; //The char we want to display the rows from
-    int arrayPos = getCharArrayPositionExtended(displayString[charNum]); //the position in the aplabetbitmap
-    int len = alphabetBitmapExtended[arrayPos][0]; //The first element in the bitmap is the length of that array
-    int shiftLeft = charPos % len;
-    int shiftRight = 0;
-    int index = shiftLeft;
-    int i = charPos;
-
-
-    //Sends the data to the LED Matrix row by row
-    for (int j = 0; j < 8; j++)
-    {
-      index = j + shiftLeft - shiftRight;
-
-      if (index == len) //If we the index is  equal to the length of the array then we can start displaying rows from the next
-      {
-        charNum++;
-        shiftRight = j; //We need to shift right the number of rows we have already displayed, so we can start display from the first row of the new char
-        arrayPos = getCharArrayPositionExtended(displayString[charNum]);
-        len = alphabetBitmapExtended[arrayPos][0];
-        shiftLeft = 0; //We no longer need to shift left
-        index = j + shiftLeft - shiftRight; //Calc the new index of the row
-      }
-
-      setRow(mtx, j, alphabetBitmapExtended[arrayPos][index + 1]); //+1 to the index as the first element is the array size
-    }
-
-
-    charPos++; //The char needs to be shifted one row across the display
-
-    //Checking if the current char is currently off the screen, if so then move onto the next char
-    arrayPos = getCharArrayPositionExtended(displayString[currChar]);
-    len = alphabetBitmapExtended[arrayPos][0];
-    if (charPos == len) //Change to the next character
-    {
-      currChar++;
-      charPos = 0;
-    }
-
-    delay(delayMS);
-    clearAll();
-  }
-
-  free(displayString);
 }
