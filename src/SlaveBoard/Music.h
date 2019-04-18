@@ -30,6 +30,7 @@
 #define SO_LONG_BOWSER 8
 #define OUTRO 9
 #define THANKS_FOR_PLAYING 10
+#define PRESS_START_TO_PLAY 11
 
 /**
    \brief Setup the Arduino Chip's feature for our use.

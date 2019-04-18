@@ -50,6 +50,12 @@ const static byte alphabetBitmapExtended[44][9] = {
   {0x06, 0xE1, 0x91, 0x89, 0x85, 0x83, 0x00, 0x00, 0x00}  //Z
 };
 
+//Can be used to emulate flashing stars
+const static byte starBitmap[2][16] = {
+  {0x44, 0x2C, 0x3A, 0x1F, 0x3A, 0x2C, 0x44, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}, //First star on
+  {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x88, 0x58, 0x74, 0x3E, 0x74, 0x58, 0x88, 0x00} //Secon star on
+
+};
 class LedControlExtended : public LedControl
 {
   public:
@@ -72,4 +78,6 @@ class LedControlExtended : public LedControl
        @return true if the string has been completely scrolled across the screen.
     */
     bool writeScrollingString(int mtx, int numDevices, char * inputString, long delayMS);
+
+    void writeScrollingStars(int mtx, int numDevices, long delayMS);
 };

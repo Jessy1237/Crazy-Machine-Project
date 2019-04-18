@@ -5,7 +5,8 @@
 #define DATA_PIN A0
 #define CS_PIN  A1
 #define CLK_PIN A2
-#define NBR_MTX 5 //number of matrices attached is one
+#define NBR_MTX 4 //number of matrices attached is one
+#define LED_DELAY 69
 
 //State pins
 #define STATE_PIN0 A3
@@ -39,7 +40,7 @@ void setup()
     lc.shutdown(i, false);
 
     /* Set the brightness to a medium values */
-    lc.setIntensity(i, 5);
+    lc.setIntensity(i, 8);
 
     /* and clear the display */
     lc.clearDisplay(i);
@@ -98,14 +99,21 @@ void neutralState(short state, short prevState)
   {
     displayString = PRESS_START_MSG;
     stopMusic();
-    numCycles = 0;
+    numCycles = 2000;
     numCoins = 0;
     numLifes = 2;
     resetTrackPositions();
+    playMusic(PRESS_START_TO_PLAY);
+  }
+
+  if(numCycles == 2000)
+  {
+    playMusic(PRESS_START_TO_PLAY);
+    numCycles = 0; //Set to 0 to loop the sound effect
   }
 
   //Here we write things that need to happen every cycle in a state
-  lc.writeScrollingString(0, NBR_MTX, displayString, 69);
+  lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
 }
 
 void aboveToUndergroundState(short state, short prevState)
@@ -127,7 +135,7 @@ void aboveToUndergroundState(short state, short prevState)
     playMusic(UNDERGROUND);
   }
 
-  lc.writeScrollingString(0, NBR_MTX, displayString, 69);
+  lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
 }
 
 void superStarState(short state, short prevState)
@@ -151,7 +159,7 @@ void superStarState(short state, short prevState)
     playMusic(SUPER_STAR);
   }
 
-  //lc.displaySuperStar();
+  lc.writeScrollingStars(0, NBR_MTX, LED_DELAY * 1.5);
   //lc.displayPlayerStats(numLifes, numCoins);
 }
 
@@ -205,7 +213,7 @@ void finalElevatorState(short state, short prevState)
 
   if (numCycles >= 1000)
   {
-    lc.writeScrollingString(0, NBR_MTX, displayString, 69);
+    lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
   }
 
   if (numCycles == 2000) //Possibly combine this music file with the so long bowser
@@ -225,5 +233,5 @@ void finishedState(short state, short prevState)
     displayString = CONGRATS_MSG;
   }
 
-  lc.writeScrollingString(0, NBR_MTX, displayString, 69);
+  lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
 }

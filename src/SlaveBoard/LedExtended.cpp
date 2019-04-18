@@ -55,7 +55,7 @@ char* getDisplayString(char* inputString, int numDevices)
       displayString[i + 2 * numDevices] = inputString[i];
     }
 
-    for (int i = numDevices*2; i < numDevices * 4; i++)
+    for (int i = numDevices * 2; i < numDevices * 4; i++)
     {
       displayString[numChar + i] = ' ';
     }
@@ -93,7 +93,7 @@ bool LedControlExtended::writeScrollingString(int mtx, int numDevices, char* inp
   if (strcmp(oldInputString, inputString) != 0)
   {
     oldInputString = inputString;
-    numChar = strlen(inputString) + 2*numDevices;
+    numChar = strlen(inputString) + 2 * numDevices;
     if (scrollString != NULL)
     {
       free(scrollString);
@@ -109,10 +109,9 @@ bool LedControlExtended::writeScrollingString(int mtx, int numDevices, char* inp
     short shiftLeft = charPos % len;
     short shiftRight = 0;
     short index = shiftLeft;
-    short i = charPos;
 
     //Sends the data to the LED Matrix row by row
-    for (int j = 0; j < 8 * numDevices; j++)
+    for (int j = mtx * 8; j < 8 * numDevices; j++)
     {
       index = j + shiftLeft - shiftRight;
 
@@ -141,7 +140,7 @@ bool LedControlExtended::writeScrollingString(int mtx, int numDevices, char* inp
     }
 
     delay(delayMS);
-    clearAll();
+    //clearAll(); //Makes it jittery with clearAll being used
   }
 
   if (currChar >= numChar)
@@ -150,4 +149,51 @@ bool LedControlExtended::writeScrollingString(int mtx, int numDevices, char* inp
   }
 
   return finishedCycle;
+}
+
+void LedControlExtended::writeScrollingStars(int mtx, int numDevices, long delayMS)
+{
+  static bool second = false;
+  static short starPos = 0;
+  const short len = 16;
+
+  if (starPos >= len)
+  {
+    starPos = 0;
+  }
+
+  short shiftLeft = starPos % len;
+  short index = shiftLeft;
+  short shiftRight = 0;
+
+  //Sends the data to the LED Matrix row by row
+  for (int j = mtx * 8; j < 8 * numDevices; j++)
+  {
+    index = j + shiftLeft - shiftRight;
+
+    if (index == len) //If we the index is  equal to the length of the array then we can start displaying rows from the next
+    {
+      shiftRight = j; //We need to shift right the number of rows we have already displayed, so we can start display from the first row of the new char
+      shiftLeft = 0; //We no longer need to shift left
+      index = j + shiftLeft - shiftRight; //Calc the new index of the row
+    }
+
+    setRow(j / 8, j % 8, starBitmap[second][index % 16]);
+  }
+
+  if (second)
+  {
+    second = false;
+    starPos += 8; //The char needs to be shifted one row across the display
+  }
+  else
+  {
+    second = true;
+  }
+
+  delay(delayMS);
+  clearAll(); //Makes it jittery with clearAll being used
+
+
+
 }
