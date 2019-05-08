@@ -80,6 +80,7 @@ class LedControlExtended : public LedControl
     bool writeScrollingString(int mtx, int numDevices, char * inputString, long delayMS);
 
     void writeScrollingStars(int mtx, int numDevices, long delayMS);
-};
 
     void displayPlayerStats(int numDevices, int numLives, int numCoins);
+};
+
