@@ -21,6 +21,7 @@ LedControlExtended lc = LedControlExtended(DATA_PIN, CLK_PIN, CS_PIN, NBR_MTX);
 char* displayString = NULL;
 
 short prevState = -1;
+short state = 0;
 long numCycles = 0;
 short numCoins = 0;
 short numLifes = 2;
@@ -55,11 +56,15 @@ void setup()
   pinMode(STATE_PIN0, INPUT);
   pinMode(STATE_PIN1, INPUT);
   pinMode(STATE_PIN2, INPUT);
+
+  Serial.begin(115200);
 }
 
 void loop()
 {
   short state = digitalRead(STATE_PIN2) * 4 + digitalRead(STATE_PIN1) * 2 + digitalRead(STATE_PIN0);
+  //if (Serial.available() > 0)
+    //state = Serial.parseInt();
 
   switch (state)
   {
@@ -90,6 +95,8 @@ void loop()
   }
 
   numCycles++;
+  Serial.print(state);
+  Serial.print("\n");
   prevState = state;
 }
 
@@ -99,16 +106,18 @@ void neutralState(short state, short prevState)
   {
     displayString = PRESS_START_MSG;
     stopMusic();
-    numCycles = 2000;
+    numCycles = 0;
     numCoins = 0;
     numLifes = 2;
     resetTrackPositions();
     playMusic(PRESS_START_TO_PLAY);
+    lc.clearAll();
   }
 
-  if(numCycles == 2000)
+  if (numCycles == 40)
   {
     playMusic(PRESS_START_TO_PLAY);
+    Serial.print("Playing sound\n");
     numCycles = 0; //Set to 0 to loop the sound effect
   }
 
@@ -124,13 +133,14 @@ void aboveToUndergroundState(short state, short prevState)
     displayString = WELCOME_MSG;
     playMusic(HERE_WE_GO);
     numCycles = 0;
+    lc.clearAll();
   }
 
-  if (numCycles == 1000)
+  if (numCycles == 12)
   {
     playMusic(WARP_PIPE);
   }
-  else if (numCycles == 2000)
+  else if (numCycles == 22)
   {
     playMusic(UNDERGROUND);
   }
@@ -145,15 +155,16 @@ void superStarState(short state, short prevState)
     stopMusic();
     playMusic(SUPER_STAR);
     numCycles = 0;
+    lc.clearAll();
   }
 
-  if (numCycles == 1000)
+  if (numCycles == 13)
   {
     stopMusic();
     playMusic(ENEMY_DEATH);
     numCoins++;
   }
-  else if (numCycles == 1250)
+  else if (numCycles == 18)
   {
     stopMusic();
     playMusic(SUPER_STAR);
@@ -171,9 +182,10 @@ void elevatorToFunnelState(short state, short prevState)
     playMusic(ENEMY_DEATH);
     numCoins++;
     numCycles = 0;
+    lc.clearAll();
   }
 
-  if (numCycles == 250)
+  if (numCycles == 5)
   {
     stopMusic();
     playMusic(UNDERGROUND);
@@ -188,13 +200,14 @@ void funnelState(short state, short prevState)
   {
     stopMusic();
     numCycles = 0;
+    lc.clearAll();
   }
 
-  if (numCycles == 1000)
+  if (numCycles == 10)
   {
     playMusic(WAAH);
   }
-  else if (numCycles == 4000)
+  else if (numCycles == 40)
   {
     stopMusic();
     playMusic(OOF);
@@ -209,14 +222,15 @@ void finalElevatorState(short state, short prevState)
     playMusic(SO_LONG_BOWSER);
     numCycles = 0;
     displayString = CONGRATS_MSG;
+    lc.clearAll();
   }
 
-  if (numCycles >= 1000)
+  if (numCycles >= 10)
   {
     lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
   }
 
-  if (numCycles == 2000) //Possibly combine this music file with the so long bowser
+  if (numCycles == 25) //Possibly combine this music file with the so long bowser
   {
     stopMusic();
     playMusic(OUTRO);
@@ -231,6 +245,7 @@ void finishedState(short state, short prevState)
     playMusic(THANKS_FOR_PLAYING);
     numCycles = 0;
     displayString = CONGRATS_MSG;
+    lc.clearAll();
   }
 
   lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
