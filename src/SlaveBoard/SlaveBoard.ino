@@ -56,15 +56,11 @@ void setup()
   pinMode(STATE_PIN0, INPUT);
   pinMode(STATE_PIN1, INPUT);
   pinMode(STATE_PIN2, INPUT);
-
-  Serial.begin(115200);
 }
 
 void loop()
 {
   short state = digitalRead(STATE_PIN2) * 4 + digitalRead(STATE_PIN1) * 2 + digitalRead(STATE_PIN0);
-  //if (Serial.available() > 0)
-    //state = Serial.parseInt();
 
   switch (state)
   {
@@ -95,8 +91,6 @@ void loop()
   }
 
   numCycles++;
-  Serial.print(state);
-  Serial.print("\n");
   prevState = state;
 }
 
@@ -117,7 +111,7 @@ void neutralState(short state, short prevState)
   if (numCycles == 40)
   {
     playMusic(PRESS_START_TO_PLAY);
-    Serial.print("Playing sound\n");
+    //Serial.print("Playing sound\n");
     numCycles = 0; //Set to 0 to loop the sound effect
   }
 
@@ -170,8 +164,8 @@ void superStarState(short state, short prevState)
     playMusic(SUPER_STAR);
   }
 
-  lc.writeScrollingStars(0, NBR_MTX, LED_DELAY * 1.5);
-  //lc.displayPlayerStats(numLifes, numCoins);
+  lc.writeScrollingStars(1, NBR_MTX, LED_DELAY * 1.5);
+  lc.displayPlayerStats(numLifes, numCoins);
 }
 
 void elevatorToFunnelState(short state, short prevState)
@@ -191,7 +185,7 @@ void elevatorToFunnelState(short state, short prevState)
     playMusic(UNDERGROUND);
   }
 
-  //lc.displayPlayerStats(numLifes, numCoins);
+  lc.displayPlayerStats(numLifes, numCoins);
 }
 
 void funnelState(short state, short prevState)
@@ -207,11 +201,13 @@ void funnelState(short state, short prevState)
   {
     playMusic(WAAH);
   }
-  else if (numCycles == 40)
+  else if (numCycles == 300)
   {
     stopMusic();
     playMusic(OOF);
   }
+
+  lc.displayPlayerStats(numLifes, numCoins);
 }
 
 void finalElevatorState(short state, short prevState)

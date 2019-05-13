@@ -192,8 +192,34 @@ void LedControlExtended::writeScrollingStars(int mtx, int numDevices, long delay
   }
 
   delay(delayMS);
-  clearAll(); //Makes it jittery with clearAll being used
+  for(int i = 1; i< numDevices; i++)
+  {
+    clearDisplay(i);//Makes it jittery with clear being used
+  }
+}
 
+void LedControlExtended::displayPlayerStats(int numLives, int numCoins)
+{
+  byte row[3] = {0x00, 0x00, 0x00};
 
+  //These rows to display the C and L
+  setRow(0, 0, 0xE7);
+  setRow(0, 1, 0x85);
 
+  int i;
+  for (i = 0; i < numLives; i++ )
+  {
+    row[i] += 0xE0;
+  }
+
+  for (i = 0; i < numCoins; i++ )
+  {
+    row[i] += 0x07;
+  }
+
+  for (i = 0; i < 3; i++) //To display the numbers after the words
+  {
+    setRow(0, 2 * (i + 1), 0x00); //The spaces between the roman numerals;
+    setRow(0, 2 * (i + 1) + 1, row[i]);
+  }
 }

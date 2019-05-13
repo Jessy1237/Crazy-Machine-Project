@@ -81,6 +81,5 @@ class LedControlExtended : public LedControl
 
     void writeScrollingStars(int mtx, int numDevices, long delayMS);
 
-    void displayPlayerStats(int numDevices, int numLives, int numCoins);
+    void displayPlayerStats(int numLives, int numCoins);
 };
-
