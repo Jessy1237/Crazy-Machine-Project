@@ -1,0 +1,9 @@
+
+State Machine - |Crazy_Machine|fstate
+Name fstate.State101 fstate.State100 fstate.State011 fstate.State010 fstate.State001 fstate.State000 
+fstate.State000 0 0 0 0 0 0 
+fstate.State001 0 0 0 0 1 1 
+fstate.State010 0 0 0 1 0 1 
+fstate.State011 0 0 1 0 0 1 
+fstate.State100 0 1 0 0 0 1 
+fstate.State101 1 0 0 0 0 1 

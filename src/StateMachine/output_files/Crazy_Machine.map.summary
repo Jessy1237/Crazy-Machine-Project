@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu May 23 20:04:27 2019
+Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Revision Name : Crazy_Machine
+Top-level Entity Name : Crazy_Machine
+Family : Cyclone III
+Total logic elements : 341
+    Total combinational functions : 341
+    Dedicated logic registers : 166
+Total registers : 166
+Total pins : 17
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

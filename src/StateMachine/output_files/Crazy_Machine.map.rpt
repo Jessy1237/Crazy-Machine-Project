@@ -1,0 +1,517 @@
+Analysis & Synthesis report for Crazy_Machine
+Thu May 23 20:04:27 2019
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Crazy_Machine|fstate
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Port Connectivity Checks: "servo_pwm2:servo_pwm2_map"
+ 15. Port Connectivity Checks: "servo_pwm1:servo_pwm1_map"
+ 16. Port Connectivity Checks: "Timer:Timer_map"
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu May 23 20:04:27 2019      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; Crazy_Machine                              ;
+; Top-level Entity Name              ; Crazy_Machine                              ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 341                                        ;
+;     Total combinational functions  ; 341                                        ;
+;     Dedicated logic registers      ; 166                                        ;
+; Total registers                    ; 166                                        ;
+; Total pins                         ; 17                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; Crazy_Machine      ; Crazy_Machine      ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                              ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------+---------+
+; servo_pwm2.vhd                   ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/servo_pwm2.vhd    ;         ;
+; servo_pwm1.vhd                   ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/servo_pwm1.vhd    ;         ;
+; Timer.vhd                        ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/Timer.vhd         ;         ;
+; Crazy_Machine.vhd                ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/Crazy_Machine.vhd ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 341         ;
+;                                             ;             ;
+; Total combinational functions               ; 341         ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 164         ;
+;     -- 3 input functions                    ; 9           ;
+;     -- <=2 input functions                  ; 168         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 186         ;
+;     -- arithmetic mode                      ; 155         ;
+;                                             ;             ;
+; Total registers                             ; 166         ;
+;     -- Dedicated logic registers            ; 166         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 17          ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+; Maximum fan-out node                        ; clock~input ;
+; Maximum fan-out                             ; 166         ;
+; Total fan-out                               ; 1475        ;
+; Average fan-out                             ; 2.73        ;
++---------------------------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                  ;
++--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
+; Compilation Hierarchy Node     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Library Name ;
++--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
+; |Crazy_Machine                 ; 341 (30)          ; 166 (6)      ; 0           ; 0            ; 0       ; 0         ; 17   ; 0            ; |Crazy_Machine                           ; work         ;
+;    |Timer:Timer_map|           ; 153 (153)         ; 96 (96)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|Timer:Timer_map           ; work         ;
+;    |servo_pwm1:servo_pwm1_map| ; 155 (155)         ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm1:servo_pwm1_map ; work         ;
+;    |servo_pwm2:servo_pwm2_map| ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm2:servo_pwm2_map ; work         ;
++--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Crazy_Machine|fstate                                                                                       ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; Name            ; fstate.State101 ; fstate.State100 ; fstate.State011 ; fstate.State010 ; fstate.State001 ; fstate.State000 ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; fstate.State000 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ;
+; fstate.State001 ; 0               ; 0               ; 0               ; 0               ; 1               ; 1               ;
+; fstate.State010 ; 0               ; 0               ; 0               ; 1               ; 0               ; 1               ;
+; fstate.State011 ; 0               ; 0               ; 1               ; 0               ; 0               ; 1               ;
+; fstate.State100 ; 0               ; 1               ; 0               ; 0               ; 0               ; 1               ;
+; fstate.State101 ; 1               ; 0               ; 0               ; 0               ; 0               ; 1               ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; started                                            ; Selector6           ; yes                    ;
+; Number of user-specified and inferred latches = 1  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                         ;
++----------------------------------------+---------------------------------------------------+
+; Register name                          ; Reason for Removal                                ;
++----------------------------------------+---------------------------------------------------+
+; servo_pwm2:servo_pwm2_map|degrees[31]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[31] ;
+; servo_pwm2:servo_pwm2_map|degrees[30]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[30] ;
+; servo_pwm2:servo_pwm2_map|degrees[29]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[29] ;
+; servo_pwm2:servo_pwm2_map|degrees[28]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[28] ;
+; servo_pwm2:servo_pwm2_map|degrees[27]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[27] ;
+; servo_pwm2:servo_pwm2_map|degrees[26]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[26] ;
+; servo_pwm2:servo_pwm2_map|degrees[25]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[25] ;
+; servo_pwm2:servo_pwm2_map|degrees[24]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[24] ;
+; servo_pwm2:servo_pwm2_map|degrees[23]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[23] ;
+; servo_pwm2:servo_pwm2_map|degrees[22]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[22] ;
+; servo_pwm2:servo_pwm2_map|degrees[21]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[21] ;
+; servo_pwm2:servo_pwm2_map|degrees[20]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[20] ;
+; servo_pwm2:servo_pwm2_map|degrees[19]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[19] ;
+; servo_pwm2:servo_pwm2_map|degrees[18]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[18] ;
+; servo_pwm2:servo_pwm2_map|degrees[17]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[17] ;
+; servo_pwm2:servo_pwm2_map|degrees[16]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[16] ;
+; servo_pwm2:servo_pwm2_map|degrees[15]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[15] ;
+; servo_pwm2:servo_pwm2_map|degrees[14]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[14] ;
+; servo_pwm2:servo_pwm2_map|degrees[13]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[13] ;
+; servo_pwm2:servo_pwm2_map|degrees[12]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[12] ;
+; servo_pwm2:servo_pwm2_map|degrees[11]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[11] ;
+; servo_pwm2:servo_pwm2_map|degrees[10]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[10] ;
+; servo_pwm2:servo_pwm2_map|degrees[9]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[9]  ;
+; servo_pwm2:servo_pwm2_map|degrees[8]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[8]  ;
+; servo_pwm2:servo_pwm2_map|degrees[7]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[7]  ;
+; servo_pwm2:servo_pwm2_map|degrees[6]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[6]  ;
+; servo_pwm2:servo_pwm2_map|degrees[5]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[5]  ;
+; servo_pwm2:servo_pwm2_map|degrees[4]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[4]  ;
+; servo_pwm2:servo_pwm2_map|degrees[3]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[3]  ;
+; servo_pwm2:servo_pwm2_map|degrees[2]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[2]  ;
+; servo_pwm2:servo_pwm2_map|degrees[1]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[1]  ;
+; servo_pwm2:servo_pwm2_map|degrees[0]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[0]  ;
+; servo_pwm2:servo_pwm2_map|Ticks[31]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[31]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[30]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[30]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[29]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[29]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[28]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[28]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[27]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[27]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[26]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[26]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[25]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[25]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[24]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[24]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[23]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[23]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[22]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[22]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[21]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[21]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[20]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[20]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[19]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[19]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[18]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[18]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[17]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[17]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[16]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[16]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[15]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[15]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[14]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[14]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[13]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[13]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[12]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[12]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[11]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[11]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[10]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[10]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[9]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[9]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[7]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[7]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[6]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[6]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[5]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[5]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[3]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[3]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[1]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[1]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[8]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[8]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[4]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[4]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[2]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[2]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[0]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[0]    ;
+; Total Number of Removed Registers = 64 ;                                                   ;
++----------------------------------------+---------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 166   ;
+; Number of registers using Synchronous Clear  ; 69    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 32    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; servo_pwm1:servo_pwm1_map|degrees[31]  ; 4       ;
+; servo_pwm1:servo_pwm1_map|degrees[0]   ; 2       ;
+; servo_pwm1:servo_pwm1_map|Ticks[0]     ; 2       ;
+; servo_pwm1:servo_pwm1_map|Ticks[31]    ; 2       ;
+; Timer:Timer_map|Ticks[0]               ; 2       ;
+; Timer:Timer_map|Ticks[31]              ; 2       ;
+; Total number of inverted registers = 6 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|Ticks[30]   ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|Timer:Timer_map|Ticks[23]             ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|degrees[30] ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |Crazy_Machine|Timer:Timer_map|Millis[7]~reg0        ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; Yes        ; |Crazy_Machine|Timer:Timer_map|Seconds[10]~reg0      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|Ticks[31]   ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|Timer:Timer_map|Ticks[0]              ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|degrees[31] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "servo_pwm2:servo_pwm2_map" ;
++---------+-------+----------+--------------------------+
+; Port    ; Type  ; Severity ; Details                  ;
++---------+-------+----------+--------------------------+
+; pos2[7] ; Input ; Info     ; Stuck at GND             ;
+; pos2[5] ; Input ; Info     ; Stuck at GND             ;
+; pos2[2] ; Input ; Info     ; Stuck at GND             ;
+; pos2[0] ; Input ; Info     ; Stuck at GND             ;
++---------+-------+----------+--------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "servo_pwm1:servo_pwm1_map" ;
++---------+-------+----------+--------------------------+
+; Port    ; Type  ; Severity ; Details                  ;
++---------+-------+----------+--------------------------+
+; pos1[7] ; Input ; Info     ; Stuck at GND             ;
+; pos1[5] ; Input ; Info     ; Stuck at GND             ;
+; pos1[2] ; Input ; Info     ; Stuck at GND             ;
+; pos1[0] ; Input ; Info     ; Stuck at GND             ;
++---------+-------+----------+--------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Timer:Timer_map"                                                                      ;
++---------+-------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                             ;
++---------+-------+----------+-------------------------------------------------------------------------------------+
+; millis  ; Bidir ; Warning  ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; minutes ; Bidir ; Warning  ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+-------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Thu May 23 20:04:25 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Crazy_Machine -c Crazy_Machine
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 2 design units, including 1 entities, in source file servo_pwm2.vhd
+    Info (12022): Found design unit 1: servo_pwm2-rtl
+    Info (12023): Found entity 1: servo_pwm2
+Info (12021): Found 2 design units, including 1 entities, in source file servo_pwm1.vhd
+    Info (12022): Found design unit 1: servo_pwm1-rtl
+    Info (12023): Found entity 1: servo_pwm1
+Info (12021): Found 2 design units, including 1 entities, in source file clk50hz.vhd
+    Info (12022): Found design unit 1: clk50Hz-Behavioral
+    Info (12023): Found entity 1: clk50Hz
+Info (12021): Found 2 design units, including 1 entities, in source file timer.vhd
+    Info (12022): Found design unit 1: Timer-rtl
+    Info (12023): Found entity 1: Timer
+Info (12021): Found 2 design units, including 1 entities, in source file crazy_machine.vhd
+    Info (12022): Found design unit 1: Crazy_Machine-BEHAVIOR
+    Info (12023): Found entity 1: Crazy_Machine
+Info (12127): Elaborating entity "Crazy_Machine" for the top level hierarchy
+Warning (10492): VHDL Process Statement warning at Crazy_Machine.vhd(152): signal "Seconds" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Crazy_Machine.vhd(157): signal "started" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at Crazy_Machine.vhd(176): signal "Seconds" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at Crazy_Machine.vhd(105): inferring latch(es) for signal or variable "started", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "started" at Crazy_Machine.vhd(105)
+Info (12128): Elaborating entity "Timer" for hierarchy "Timer:Timer_map"
+Info (12128): Elaborating entity "servo_pwm1" for hierarchy "servo_pwm1:servo_pwm1_map"
+Info (12128): Elaborating entity "servo_pwm2" for hierarchy "servo_pwm2:servo_pwm2_map"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch started has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal fstate.State001
+Info (286030): Timing-Driven Synthesis is running
+Warning (20013): Ignored assignments for entity "DE0_Default" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_global_assignment -name LL_ROOT_REGION ON -entity DE0_Default -section_id "Root Region" was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name LL_MEMBER_STATE LOCKED -entity DE0_Default -section_id "Root Region" was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name LL_ROUTING_REGION OFF -entity DE0_Default -section_id "Root Region" was ignored
+    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 14622752 -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity DE0_Default -section_id Top was ignored
+Warning (20013): Ignored assignments for entity "lights" -- entity does not exist in design
+    Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IGNORE_SOURCE_FILE_CHANGES OFF -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ALWAYS_USE_QXP_NETLIST OFF -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ALLOW_MULTIPLE_PERSONAS OFF -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ASD_REGION_ID 1 -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name CROSS_BOUNDARY_OPTIMIZATIONS OFF -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_CONSTANTS_ON_INPUTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PROPAGATE_INVERSIONS_ON_INPUTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name REMOVE_LOGIC_ON_UNCONNECTED_OUTPUTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_INPUTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity lights -section_id Top was ignored
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 358 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 11 output pins
+    Info (21061): Implemented 341 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 59 warnings
+    Info: Peak virtual memory: 4692 megabytes
+    Info: Processing ended: Thu May 23 20:04:27 2019
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+
