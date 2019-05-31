@@ -6,7 +6,7 @@ entity servo_pwm2 is
     PORT (
         clk   : IN  STD_LOGIC;
         reset : IN  STD_LOGIC;
-        pos2   : IN  INTEGER range 0 to 180;
+        pos2   : IN  INTEGER range 0 to 360;
         servo2 : OUT STD_LOGIC
     );
 end servo_pwm2;
@@ -23,7 +23,7 @@ begin
         if rising_edge(clk) then
  
             -- If the negative reset signal is active
-            if reset = '0' then
+            if reset = '1' then
                 Ticks   <= 0;
 					 degrees <= 0;
             else

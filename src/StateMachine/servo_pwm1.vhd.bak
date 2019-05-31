@@ -2,50 +2,35 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity servo_pwm is
+entity servo_pwm1 is
     PORT (
         clk   : IN  STD_LOGIC;
         reset : IN  STD_LOGIC;
-        pos   : IN  INTEGER range 0 to 180;
-        servo : OUT STD_LOGIC
+        pos1   : IN  STD_LOGIC_VECTOR(6 downto 0);
+        servo1 : OUT STD_LOGIC
     );
-end servo_pwm;
+end servo_pwm1;
 
-ARCHITECTURE rtl OF servo_pwm IS
- 
-    -- Signal for counting clock periods
-    SIGNAL Ticks : INTEGER;
-	 SIGNAL Millis: INTEGER;
- 
+architecture Behavioral of servo_pwm1 is
+    -- Counter, from 0 to 1279.
+    signal cnt : unsigned(10 downto 0);
+    -- Temporal signal used to generate the PWM pulse.
+    signal pwmi: unsigned(7 downto 0);
 begin
- 
-    process(clk) is
-    begin
-        if rising_edge(clk) then
- 
-            -- If the negative reset signal is active
-            if reset = '0' then
-                Ticks   <= 0;
-					 Millis <= 0;
+    -- Minimum value should be 0.5ms.
+    pwmi <= unsigned('0' & pos1) + 32;
+    -- Counter process, from 0 to 1279.
+    counter: process (reset, clk) begin
+        if (reset = '1') then
+            cnt <= (others => '0');
+        elsif rising_edge(clk) then
+            if (cnt = 1279) then
+                cnt <= (others => '0');
             else
- 
-                -- True once every millisecond
-                if Ticks = 49999 then
-                    Ticks <= 0;
-							
-							--20ms period means a 50Hz clock
-							if Millis = 19 then
-							Millis <= 0;
-							else
-								Millis <= Millis + 1;
-							end if;
-                else
-                    Ticks <= Ticks + 1;
-                end if;
- 
+                cnt <= cnt + 1;
             end if;
         end if;
     end process;
-	  -- Output signal for the servomotor. Outputs between a range of Pulse Width of 1ms to 2ms for 0 to 180 degrees servo change. With a period of PWM being 20ms i.e. 50Hz
-    servo <= '1' when (Millis < (1 + pos/180)) else '0';
-end architecture;
+    -- Output signal for the servomotor.
+    servo1 <= '1' when (cnt < pwmi) else '0';
+end Behavioral;

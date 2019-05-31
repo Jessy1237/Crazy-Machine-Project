@@ -22,8 +22,10 @@ ENTITY Crazy_Machine IS
     PORT (
         reset : IN STD_LOGIC := '0';
         clock : IN STD_LOGIC;
+		  Ppad1_I : IN STD_LOGIC := '0';
         Ppad2_I : IN STD_LOGIC := '0';
         Ppad3_I : IN STD_LOGIC := '0';
+		  Button_1 : IN STD_LOGIC := '0';
         sw9 : IN STD_LOGIC := '0';
         sw8 : IN STD_LOGIC := '0';
         led9 : OUT STD_LOGIC;
@@ -36,13 +38,24 @@ ENTITY Crazy_Machine IS
         StateBit_2 : OUT STD_LOGIC;
         StateBit_3 : OUT STD_LOGIC;
         servo1: OUT STD_LOGIC;
-		  servo2: OUT STD_LOGIC
+		  servo2: OUT STD_LOGIC;
+		  servo3: OUT STD_LOGIC;
+		  servo4: OUT STD_LOGIC
     );
 END Crazy_Machine;
 
 ARCHITECTURE BEHAVIOR OF Crazy_Machine IS
-	 
 	 COMPONENT Timer
+		PORT(
+			clk     : in std_logic;
+			reset    : in std_logic; -- Negative reset
+			Millis : inout integer;
+			Seconds : inout integer;
+			Minutes : inout integer
+		);
+end COMPONENT;
+
+	 COMPONENT TimerAlt
 		PORT(
 			clk     : in std_logic;
 			reset    : in std_logic; -- Negative reset
@@ -56,7 +69,7 @@ end COMPONENT;
         PORT (
             clk   : IN  STD_LOGIC;
             reset : IN  STD_LOGIC;
-            pos1   : IN INTEGER range 0 to 180;
+            pos1   : IN INTEGER range 0 to 360;
             servo1 : OUT STD_LOGIC
         );
     END COMPONENT;
@@ -65,8 +78,26 @@ end COMPONENT;
         PORT (
             clk   : IN  STD_LOGIC;
             reset : IN  STD_LOGIC;
-            pos2   : IN INTEGER range 0 to 180;
+            pos2   : IN INTEGER range 0 to 360;
             servo2 : OUT STD_LOGIC
+        );
+    END COMPONENT;
+	 
+	 COMPONENT servo_pwm3
+        PORT (
+            clk   : IN  STD_LOGIC;
+            reset : IN  STD_LOGIC;
+            pos3   : IN INTEGER range 0 to 360;
+            servo3 : OUT STD_LOGIC
+        );
+    END COMPONENT;
+	 
+	 COMPONENT servo_pwm4
+        PORT (
+            clk   : IN  STD_LOGIC;
+            reset : IN  STD_LOGIC;
+            pos4   : IN INTEGER range 0 to 360;
+            servo4 : OUT STD_LOGIC
         );
     END COMPONENT;
 	 
@@ -74,17 +105,26 @@ end COMPONENT;
     TYPE type_fstate IS (State000,State001,State010,State011,State100,State101);
     SIGNAL fstate : type_fstate;
     SIGNAL reg_fstate : type_fstate;
-	 SIGNAL pos1 : INTEGER range 0 to 180;
-	 SIGNAL pos2 : INTEGER range 0 to 180;
+	 SIGNAL pos1 : INTEGER range 0 to 360;
+	 SIGNAL pos2 : INTEGER range 0 to 360;
+	 SIGNAL pos3 : INTEGER range 0 to 360;
+	 SIGNAL pos4 : INTEGER range 0 to 360;
 	 SIGNAL Millis : INTEGER;
 	 SIGNAL Seconds : INTEGER;
 	 SIGNAL Minutes : INTEGER;
 	 SIGNAL started : STD_LOGIC := '0';
-	 
+	 SIGNAL MillisAlt : INTEGER;
+	 SIGNAL SecondsAlt : INTEGER;
+	 SIGNAL MinutesAlt : INTEGER;
+	 SIGNAL startedAlt : STD_LOGIC := '0';
 BEGIN
-	 
+
 	 Timer_map: Timer PORT MAP(
         clock, started, Millis, Seconds, Minutes
+    );
+	 
+	 TimerAlt_map: TimerAlt PORT MAP(
+        clock, startedAlt, MillisAlt, SecondsAlt, MinutesAlt
     );
     
     servo_pwm1_map: servo_pwm1 PORT MAP(
@@ -94,6 +134,14 @@ BEGIN
     servo_pwm2_map: servo_pwm2 PORT MAP(
         clock, reset, pos2, servo2
     );
+	 
+	 servo_pwm3_map: servo_pwm3 PORT MAP(
+        clock, reset, pos3, servo3
+    );
+	 
+	 servo_pwm4_map: servo_pwm4 PORT MAP(
+        clock, reset, pos4, servo4
+    );
 
     PROCESS (clock,reg_fstate)
     BEGIN
@@ -102,7 +150,7 @@ BEGIN
         END IF;
     END PROCESS;
 
-    PROCESS (fstate,reset,Ppad2_I,Ppad3_I,sw9,sw8)
+    PROCESS (fstate,reset,Ppad1_I,Button_1,Ppad2_I,Ppad3_I)
     BEGIN
         IF (reset='1') THEN
             reg_fstate <= State000;
@@ -115,9 +163,13 @@ BEGIN
             StateBit_1 <= '0';
             StateBit_2 <= '0';
             StateBit_3 <= '0';
-			   pos2 <= 0;
-	         pos1 <= 0;
+			   pos2 <= 360;
+	         pos1 <= 360;
+				pos3 <= 360;
+				pos4 <= 180;
 				started <= '0';
+				startedAlt <= '0';
+				
         ELSE
             led9 <= '0';
             led8 <= '0';
@@ -128,19 +180,20 @@ BEGIN
             StateBit_1 <= '0';
             StateBit_2 <= '0';
             StateBit_3 <= '0';
-			   pos2 <= 0;
-	         pos1 <= 0;
+				
             CASE fstate IS
                 WHEN State000 =>
-                    IF ((sw9 = '1')) THEN
+                    IF ((Ppad1_I = '1')) THEN
                         reg_fstate <= State001;
                     -- Inserting 'else' block to prevent latch inference
                     ELSE
                         reg_fstate <= State000;
                     END IF;
-
+						  
 						  started <= '0';
 						  
+						  startedAlt <= '0';
+
                     StateBit_3 <= '0';
 
                     led9 <= '1';
@@ -149,20 +202,23 @@ BEGIN
 
                     StateBit_1 <= '0';
 						  
-						  IF(( Seconds = 10)) THEN
-								pos2 <= 90;
-						  END IF;
+						  pos1 <= 360;
+						  pos2 <= 360;
+						  pos3 <= 360;
+						  pos4 <= 180; --start at final
+
 						  
                 WHEN State001 =>
-					 IF(started = '0') THEN
-					 started <= '1';
-					 END IF;
-                    IF ((sw8 = '1')) THEN
+                    IF ((Button_1 = '0')) THEN
                         reg_fstate <= State010;
                     -- Inserting 'else' block to prevent latch inference
                     ELSE
                         reg_fstate <= State001;
                     END IF;
+						  
+						  started <= '1';
+						  
+						  startedAlt <= '0';
 
                     StateBit_3 <= '1';
 
@@ -172,9 +228,11 @@ BEGIN
 
                     StateBit_1 <= '0';
 						 
-						 
-						  IF((Seconds = 10)) THEN
-			           pos1 <= 90;
+						  IF((Seconds >= 1 or Minutes > 0)) THEN
+			           pos1 <= 50;
+						  ELSE
+						  pos1 <= 360;
+						  pos3 <= 360;
 						  END IF;
 
                 WHEN State010 =>
@@ -184,6 +242,10 @@ BEGIN
                     ELSE
                         reg_fstate <= State010;
                     END IF;
+						  
+						  started <= '0';
+						  
+						  startedAlt <= '1';
 
                     StateBit_3 <= '0';
 
@@ -192,6 +254,14 @@ BEGIN
                     StateBit_1 <= '0';
 
                     led7 <= '1';
+						  
+						  IF((SecondsAlt >= 2 or MinutesAlt > 0)) THEN
+			           pos2 <= 0;
+						  ELSE
+						  pos2 <= 360;
+						  pos3 <= 360;
+						  END IF;
+						  
                 WHEN State011 =>
                     IF ((Ppad3_I = '1')) THEN
                         reg_fstate <= State100;
@@ -199,6 +269,10 @@ BEGIN
                     ELSE
                         reg_fstate <= State011;
                     END IF;
+						  
+						  startedAlt <= '0';
+						  
+						  started <= '1';
 
                     StateBit_3 <= '1';
 
@@ -207,6 +281,14 @@ BEGIN
                     led6 <= '1';
 
                     StateBit_1 <= '0';
+						  
+						  IF((Seconds >= 1 or Minutes > 0)) THEN
+			           pos3 <= 180;
+						  pos4 <= 360;
+						  ELSE
+						  pos3 <= 360;
+						  END IF;
+						  
                 WHEN State100 =>
                     IF ((Ppad2_I = '1')) THEN
                         reg_fstate <= State101;
@@ -214,6 +296,10 @@ BEGIN
                     ELSE
                         reg_fstate <= State100;
                     END IF;
+						  
+						  started <= '0';
+						  
+						  startedAlt <= '1';
 
                     led5 <= '1';
 
@@ -222,6 +308,11 @@ BEGIN
                     StateBit_2 <= '0';
 
                     StateBit_1 <= '1';
+						  
+						  pos4 <= 360;
+						  pos3 <= 180;
+						  
+						  
                 WHEN State101 =>
                     IF ((Ppad3_I = '1')) THEN
                         reg_fstate <= State000;
@@ -229,6 +320,10 @@ BEGIN
                     ELSE
                         reg_fstate <= State101;
                     END IF;
+						  
+						  started <= '1';
+						  
+						  startedAlt <= '0';
 
                     led4 <= '1';
 
@@ -237,6 +332,14 @@ BEGIN
                     StateBit_2 <= '0';
 
                     StateBit_1 <= '1';
+						  
+						  IF((Seconds >= 1 or Minutes > 0)) THEN
+			           pos3 <= 0;
+						  pos4 <= 180;	--**********
+						  ELSE
+						  pos3 <= 180;
+						  END IF;
+						  
                 WHEN OTHERS => 
                     led9 <= 'X';
                     led8 <= 'X';

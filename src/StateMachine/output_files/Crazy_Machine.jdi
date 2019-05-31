@@ -1,8 +1,8 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="9215e9745602867046f9"/>
+    <hash md5_digest_80b="00000000000000000000"/>
   </project>
   <file_info>
-    <file device="EP3C16F484C6" path="Crazy_Machine.sof" usercode="0xFFFFFFFF"/>
+    <file checksum="0x0011DFEE" device="EP3C16F484C6" path="Crazy_Machine.sof" usercode="0xFFFFFFFF"/>
   </file_info>
 </sld_project_info>

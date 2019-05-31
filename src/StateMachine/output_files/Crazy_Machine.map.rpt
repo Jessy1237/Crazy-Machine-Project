@@ -1,6 +1,6 @@
 Analysis & Synthesis report for Crazy_Machine
-Thu May 23 20:04:27 2019
-Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+Fri May 31 13:57:04 2019
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
 ---------------------
@@ -19,18 +19,21 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
  11. General Register Statistics
  12. Inverted Register Statistics
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Port Connectivity Checks: "servo_pwm2:servo_pwm2_map"
- 15. Port Connectivity Checks: "servo_pwm1:servo_pwm1_map"
- 16. Port Connectivity Checks: "Timer:Timer_map"
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+ 14. Port Connectivity Checks: "servo_pwm4:servo_pwm4_map"
+ 15. Port Connectivity Checks: "servo_pwm3:servo_pwm3_map"
+ 16. Port Connectivity Checks: "servo_pwm2:servo_pwm2_map"
+ 17. Port Connectivity Checks: "servo_pwm1:servo_pwm1_map"
+ 18. Port Connectivity Checks: "TimerAlt:TimerAlt_map"
+ 19. Port Connectivity Checks: "Timer:Timer_map"
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2013 Altera Corporation
+Copyright (C) 1991-2012 Altera Corporation
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -46,24 +49,24 @@ applicable agreement for further details.
 
 
 
-+---------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                    ;
-+------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 23 20:04:27 2019      ;
-; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
-; Revision Name                      ; Crazy_Machine                              ;
-; Top-level Entity Name              ; Crazy_Machine                              ;
-; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 341                                        ;
-;     Total combinational functions  ; 341                                        ;
-;     Dedicated logic registers      ; 166                                        ;
-; Total registers                    ; 166                                        ;
-; Total pins                         ; 17                                         ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 0                                          ;
-; Embedded Multiplier 9-bit elements ; 0                                          ;
-; Total PLLs                         ; 0                                          ;
-+------------------------------------+--------------------------------------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri May 31 13:57:04 2019    ;
+; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
+; Revision Name                      ; Crazy_Machine                            ;
+; Top-level Entity Name              ; Crazy_Machine                            ;
+; Family                             ; Cyclone III                              ;
+; Total logic elements               ; 654                                      ;
+;     Total combinational functions  ; 654                                      ;
+;     Dedicated logic registers      ; 326                                      ;
+; Total registers                    ; 326                                      ;
+; Total pins                         ; 21                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 0                                        ;
++------------------------------------+------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------+
@@ -153,63 +156,59 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
-+----------------------------+-------------+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                              ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------+---------+
-; servo_pwm2.vhd                   ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/servo_pwm2.vhd    ;         ;
-; servo_pwm1.vhd                   ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/servo_pwm1.vhd    ;         ;
-; Timer.vhd                        ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/Timer.vhd         ;         ;
-; Crazy_Machine.vhd                ; yes             ; User VHDL File  ; F:/Dropbox/Documents/Uni/Advanced Digital Design/Crazy-Machine-Project/src/StateMachine/Crazy_Machine.vhd ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                 ;
++----------------------------------+-----------------+-----------------------+-------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type             ; File Name with Absolute Path                    ; Library ;
++----------------------------------+-----------------+-----------------------+-------------------------------------------------+---------+
+; servo_pwm1.vhd                   ; yes             ; User VHDL File        ; C:/Users/Ashley/Documents/ADD/servo_pwm1.vhd    ;         ;
+; servo_pwm2.vhd                   ; yes             ; User VHDL File        ; C:/Users/Ashley/Documents/ADD/servo_pwm2.vhd    ;         ;
+; Timer.vhd                        ; yes             ; User VHDL File        ; C:/Users/Ashley/Documents/ADD/Timer.vhd         ;         ;
+; servo_pwm3.vhd                   ; yes             ; User VHDL File        ; C:/Users/Ashley/Documents/ADD/servo_pwm3.vhd    ;         ;
+; servo_pwm4.vhd                   ; yes             ; User VHDL File        ; C:/Users/Ashley/Documents/ADD/servo_pwm4.vhd    ;         ;
+; TimerAlt.vhd                     ; yes             ; User VHDL File        ; C:/Users/Ashley/Documents/ADD/TimerAlt.vhd      ;         ;
+; crazy_machine.vhd                ; yes             ; Auto-Found VHDL File  ; C:/Users/Ashley/Documents/ADD/crazy_machine.vhd ;         ;
++----------------------------------+-----------------+-----------------------+-------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 341         ;
-;                                             ;             ;
-; Total combinational functions               ; 341         ;
-; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 164         ;
-;     -- 3 input functions                    ; 9           ;
-;     -- <=2 input functions                  ; 168         ;
-;                                             ;             ;
-; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 186         ;
-;     -- arithmetic mode                      ; 155         ;
-;                                             ;             ;
-; Total registers                             ; 166         ;
-;     -- Dedicated logic registers            ; 166         ;
-;     -- I/O registers                        ; 0           ;
-;                                             ;             ;
-; I/O pins                                    ; 17          ;
-; Embedded Multiplier 9-bit elements          ; 0           ;
-; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 166         ;
-; Total fan-out                               ; 1475        ;
-; Average fan-out                             ; 2.73        ;
-+---------------------------------------------+-------------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 654   ;
+;                                             ;       ;
+; Total combinational functions               ; 654   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 239   ;
+;     -- 3 input functions                    ; 69    ;
+;     -- <=2 input functions                  ; 346   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 319   ;
+;     -- arithmetic mode                      ; 335   ;
+;                                             ;       ;
+; Total registers                             ; 326   ;
+;     -- Dedicated logic registers            ; 326   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 21    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out                             ; 326   ;
+; Total fan-out                               ; 2754  ;
+; Average fan-out                             ; 2.69  ;
++---------------------------------------------+-------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -217,10 +216,13 @@ applicable agreement for further details.
 +--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
 ; Compilation Hierarchy Node     ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                      ; Library Name ;
 +--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
-; |Crazy_Machine                 ; 341 (30)          ; 166 (6)      ; 0           ; 0            ; 0       ; 0         ; 17   ; 0            ; |Crazy_Machine                           ; work         ;
-;    |Timer:Timer_map|           ; 153 (153)         ; 96 (96)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|Timer:Timer_map           ; work         ;
-;    |servo_pwm1:servo_pwm1_map| ; 155 (155)         ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm1:servo_pwm1_map ; work         ;
-;    |servo_pwm2:servo_pwm2_map| ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm2:servo_pwm2_map ; work         ;
+; |Crazy_Machine                 ; 654 (63)          ; 326 (6)      ; 0           ; 0            ; 0       ; 0         ; 21   ; 0            ; |Crazy_Machine                           ;              ;
+;    |Timer:Timer_map|           ; 199 (199)         ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|Timer:Timer_map           ;              ;
+;    |TimerAlt:TimerAlt_map|     ; 198 (198)         ; 128 (128)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|TimerAlt:TimerAlt_map     ;              ;
+;    |servo_pwm1:servo_pwm1_map| ; 149 (149)         ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm1:servo_pwm1_map ;              ;
+;    |servo_pwm2:servo_pwm2_map| ; 6 (6)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm2:servo_pwm2_map ;              ;
+;    |servo_pwm3:servo_pwm3_map| ; 23 (23)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm3:servo_pwm3_map ;              ;
+;    |servo_pwm4:servo_pwm4_map| ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Crazy_Machine|servo_pwm4:servo_pwm4_map ;              ;
 +--------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -240,88 +242,237 @@ Encoding Type:  One-Hot
 +-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                               ;
-+----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
-+----------------------------------------------------+---------------------+------------------------+
-; started                                            ; Selector6           ; yes                    ;
-; Number of user-specified and inferred latches = 1  ;                     ;                        ;
-+----------------------------------------------------+---------------------+------------------------+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; pos1[8]                                             ; WideOr6             ; yes                    ;
+; pos1[6]                                             ; WideOr6             ; yes                    ;
+; pos1[4]                                             ; WideOr6             ; yes                    ;
+; pos1[3]                                             ; WideOr6             ; yes                    ;
+; pos1[1]                                             ; WideOr6             ; yes                    ;
+; pos2[8]                                             ; WideOr7             ; yes                    ;
+; pos2[6]                                             ; WideOr7             ; yes                    ;
+; pos2[5]                                             ; WideOr7             ; yes                    ;
+; pos2[3]                                             ; WideOr7             ; yes                    ;
+; pos3[8]                                             ; Selector19          ; yes                    ;
+; pos3[7]                                             ; Selector19          ; yes                    ;
+; pos3[6]                                             ; Selector19          ; yes                    ;
+; pos3[5]                                             ; Selector19          ; yes                    ;
+; pos3[4]                                             ; Selector19          ; yes                    ;
+; pos3[2]                                             ; Selector19          ; yes                    ;
+; pos3[3]                                             ; Selector19          ; yes                    ;
+; pos4[8]                                             ; Selector0           ; yes                    ;
+; pos4[7]                                             ; Selector0           ; yes                    ;
+; pos4[6]                                             ; Selector0           ; yes                    ;
+; pos4[4]                                             ; Selector0           ; yes                    ;
+; pos4[2]                                             ; Selector0           ; yes                    ;
+; pos4[3]                                             ; Selector0           ; yes                    ;
+; Number of user-specified and inferred latches = 22  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+--------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                         ;
-+----------------------------------------+---------------------------------------------------+
-; Register name                          ; Reason for Removal                                ;
-+----------------------------------------+---------------------------------------------------+
-; servo_pwm2:servo_pwm2_map|degrees[31]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[31] ;
-; servo_pwm2:servo_pwm2_map|degrees[30]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[30] ;
-; servo_pwm2:servo_pwm2_map|degrees[29]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[29] ;
-; servo_pwm2:servo_pwm2_map|degrees[28]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[28] ;
-; servo_pwm2:servo_pwm2_map|degrees[27]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[27] ;
-; servo_pwm2:servo_pwm2_map|degrees[26]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[26] ;
-; servo_pwm2:servo_pwm2_map|degrees[25]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[25] ;
-; servo_pwm2:servo_pwm2_map|degrees[24]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[24] ;
-; servo_pwm2:servo_pwm2_map|degrees[23]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[23] ;
-; servo_pwm2:servo_pwm2_map|degrees[22]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[22] ;
-; servo_pwm2:servo_pwm2_map|degrees[21]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[21] ;
-; servo_pwm2:servo_pwm2_map|degrees[20]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[20] ;
-; servo_pwm2:servo_pwm2_map|degrees[19]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[19] ;
-; servo_pwm2:servo_pwm2_map|degrees[18]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[18] ;
-; servo_pwm2:servo_pwm2_map|degrees[17]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[17] ;
-; servo_pwm2:servo_pwm2_map|degrees[16]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[16] ;
-; servo_pwm2:servo_pwm2_map|degrees[15]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[15] ;
-; servo_pwm2:servo_pwm2_map|degrees[14]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[14] ;
-; servo_pwm2:servo_pwm2_map|degrees[13]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[13] ;
-; servo_pwm2:servo_pwm2_map|degrees[12]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[12] ;
-; servo_pwm2:servo_pwm2_map|degrees[11]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[11] ;
-; servo_pwm2:servo_pwm2_map|degrees[10]  ; Merged with servo_pwm1:servo_pwm1_map|degrees[10] ;
-; servo_pwm2:servo_pwm2_map|degrees[9]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[9]  ;
-; servo_pwm2:servo_pwm2_map|degrees[8]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[8]  ;
-; servo_pwm2:servo_pwm2_map|degrees[7]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[7]  ;
-; servo_pwm2:servo_pwm2_map|degrees[6]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[6]  ;
-; servo_pwm2:servo_pwm2_map|degrees[5]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[5]  ;
-; servo_pwm2:servo_pwm2_map|degrees[4]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[4]  ;
-; servo_pwm2:servo_pwm2_map|degrees[3]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[3]  ;
-; servo_pwm2:servo_pwm2_map|degrees[2]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[2]  ;
-; servo_pwm2:servo_pwm2_map|degrees[1]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[1]  ;
-; servo_pwm2:servo_pwm2_map|degrees[0]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[0]  ;
-; servo_pwm2:servo_pwm2_map|Ticks[31]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[31]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[30]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[30]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[29]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[29]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[28]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[28]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[27]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[27]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[26]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[26]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[25]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[25]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[24]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[24]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[23]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[23]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[22]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[22]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[21]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[21]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[20]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[20]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[19]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[19]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[18]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[18]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[17]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[17]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[16]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[16]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[15]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[15]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[14]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[14]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[13]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[13]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[12]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[12]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[11]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[11]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[10]    ; Merged with servo_pwm1:servo_pwm1_map|Ticks[10]   ;
-; servo_pwm2:servo_pwm2_map|Ticks[9]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[9]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[7]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[7]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[6]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[6]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[5]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[5]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[3]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[3]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[1]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[1]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[8]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[8]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[4]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[4]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[2]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[2]    ;
-; servo_pwm2:servo_pwm2_map|Ticks[0]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[0]    ;
-; Total Number of Removed Registers = 64 ;                                                   ;
-+----------------------------------------+---------------------------------------------------+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++-----------------------------------------+---------------------------------------------------+
+; Register name                           ; Reason for Removal                                ;
++-----------------------------------------+---------------------------------------------------+
+; servo_pwm2:servo_pwm2_map|degrees[2]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[2]  ;
+; servo_pwm3:servo_pwm3_map|degrees[2]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[2]  ;
+; servo_pwm4:servo_pwm4_map|degrees[2]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[2]  ;
+; servo_pwm2:servo_pwm2_map|degrees[1]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[1]  ;
+; servo_pwm3:servo_pwm3_map|degrees[1]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[1]  ;
+; servo_pwm4:servo_pwm4_map|degrees[1]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[1]  ;
+; servo_pwm2:servo_pwm2_map|degrees[0]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[0]  ;
+; servo_pwm3:servo_pwm3_map|degrees[0]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[0]  ;
+; servo_pwm4:servo_pwm4_map|degrees[0]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[0]  ;
+; servo_pwm2:servo_pwm2_map|degrees[3]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[3]  ;
+; servo_pwm3:servo_pwm3_map|degrees[3]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[3]  ;
+; servo_pwm4:servo_pwm4_map|degrees[3]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[3]  ;
+; servo_pwm2:servo_pwm2_map|degrees[4]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[4]  ;
+; servo_pwm3:servo_pwm3_map|degrees[4]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[4]  ;
+; servo_pwm4:servo_pwm4_map|degrees[4]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[4]  ;
+; servo_pwm2:servo_pwm2_map|degrees[5]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[5]  ;
+; servo_pwm3:servo_pwm3_map|degrees[5]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[5]  ;
+; servo_pwm4:servo_pwm4_map|degrees[5]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[5]  ;
+; servo_pwm2:servo_pwm2_map|degrees[6]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[6]  ;
+; servo_pwm3:servo_pwm3_map|degrees[6]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[6]  ;
+; servo_pwm4:servo_pwm4_map|degrees[6]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[6]  ;
+; servo_pwm2:servo_pwm2_map|degrees[7]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[7]  ;
+; servo_pwm3:servo_pwm3_map|degrees[7]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[7]  ;
+; servo_pwm4:servo_pwm4_map|degrees[7]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[7]  ;
+; servo_pwm2:servo_pwm2_map|degrees[8]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[8]  ;
+; servo_pwm3:servo_pwm3_map|degrees[8]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[8]  ;
+; servo_pwm4:servo_pwm4_map|degrees[8]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[8]  ;
+; servo_pwm2:servo_pwm2_map|degrees[9]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[9]  ;
+; servo_pwm3:servo_pwm3_map|degrees[9]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[9]  ;
+; servo_pwm4:servo_pwm4_map|degrees[9]    ; Merged with servo_pwm1:servo_pwm1_map|degrees[9]  ;
+; servo_pwm2:servo_pwm2_map|degrees[10]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[10] ;
+; servo_pwm3:servo_pwm3_map|degrees[10]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[10] ;
+; servo_pwm4:servo_pwm4_map|degrees[10]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[10] ;
+; servo_pwm2:servo_pwm2_map|degrees[11]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[11] ;
+; servo_pwm3:servo_pwm3_map|degrees[11]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[11] ;
+; servo_pwm4:servo_pwm4_map|degrees[11]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[11] ;
+; servo_pwm2:servo_pwm2_map|degrees[12]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[12] ;
+; servo_pwm3:servo_pwm3_map|degrees[12]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[12] ;
+; servo_pwm4:servo_pwm4_map|degrees[12]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[12] ;
+; servo_pwm2:servo_pwm2_map|degrees[13]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[13] ;
+; servo_pwm3:servo_pwm3_map|degrees[13]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[13] ;
+; servo_pwm4:servo_pwm4_map|degrees[13]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[13] ;
+; servo_pwm2:servo_pwm2_map|degrees[14]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[14] ;
+; servo_pwm3:servo_pwm3_map|degrees[14]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[14] ;
+; servo_pwm4:servo_pwm4_map|degrees[14]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[14] ;
+; servo_pwm2:servo_pwm2_map|degrees[15]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[15] ;
+; servo_pwm3:servo_pwm3_map|degrees[15]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[15] ;
+; servo_pwm4:servo_pwm4_map|degrees[15]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[15] ;
+; servo_pwm2:servo_pwm2_map|degrees[16]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[16] ;
+; servo_pwm3:servo_pwm3_map|degrees[16]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[16] ;
+; servo_pwm4:servo_pwm4_map|degrees[16]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[16] ;
+; servo_pwm2:servo_pwm2_map|degrees[17]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[17] ;
+; servo_pwm3:servo_pwm3_map|degrees[17]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[17] ;
+; servo_pwm4:servo_pwm4_map|degrees[17]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[17] ;
+; servo_pwm2:servo_pwm2_map|degrees[18]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[18] ;
+; servo_pwm3:servo_pwm3_map|degrees[18]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[18] ;
+; servo_pwm4:servo_pwm4_map|degrees[18]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[18] ;
+; servo_pwm2:servo_pwm2_map|degrees[19]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[19] ;
+; servo_pwm3:servo_pwm3_map|degrees[19]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[19] ;
+; servo_pwm4:servo_pwm4_map|degrees[19]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[19] ;
+; servo_pwm2:servo_pwm2_map|degrees[20]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[20] ;
+; servo_pwm3:servo_pwm3_map|degrees[20]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[20] ;
+; servo_pwm4:servo_pwm4_map|degrees[20]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[20] ;
+; servo_pwm2:servo_pwm2_map|degrees[21]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[21] ;
+; servo_pwm3:servo_pwm3_map|degrees[21]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[21] ;
+; servo_pwm4:servo_pwm4_map|degrees[21]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[21] ;
+; servo_pwm2:servo_pwm2_map|degrees[22]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[22] ;
+; servo_pwm3:servo_pwm3_map|degrees[22]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[22] ;
+; servo_pwm4:servo_pwm4_map|degrees[22]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[22] ;
+; servo_pwm2:servo_pwm2_map|degrees[23]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[23] ;
+; servo_pwm3:servo_pwm3_map|degrees[23]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[23] ;
+; servo_pwm4:servo_pwm4_map|degrees[23]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[23] ;
+; servo_pwm2:servo_pwm2_map|degrees[24]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[24] ;
+; servo_pwm3:servo_pwm3_map|degrees[24]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[24] ;
+; servo_pwm4:servo_pwm4_map|degrees[24]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[24] ;
+; servo_pwm2:servo_pwm2_map|degrees[25]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[25] ;
+; servo_pwm3:servo_pwm3_map|degrees[25]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[25] ;
+; servo_pwm4:servo_pwm4_map|degrees[25]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[25] ;
+; servo_pwm2:servo_pwm2_map|degrees[26]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[26] ;
+; servo_pwm3:servo_pwm3_map|degrees[26]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[26] ;
+; servo_pwm4:servo_pwm4_map|degrees[26]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[26] ;
+; servo_pwm2:servo_pwm2_map|degrees[27]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[27] ;
+; servo_pwm3:servo_pwm3_map|degrees[27]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[27] ;
+; servo_pwm4:servo_pwm4_map|degrees[27]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[27] ;
+; servo_pwm2:servo_pwm2_map|degrees[28]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[28] ;
+; servo_pwm3:servo_pwm3_map|degrees[28]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[28] ;
+; servo_pwm4:servo_pwm4_map|degrees[28]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[28] ;
+; servo_pwm2:servo_pwm2_map|degrees[29]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[29] ;
+; servo_pwm3:servo_pwm3_map|degrees[29]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[29] ;
+; servo_pwm4:servo_pwm4_map|degrees[29]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[29] ;
+; servo_pwm2:servo_pwm2_map|degrees[30]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[30] ;
+; servo_pwm3:servo_pwm3_map|degrees[30]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[30] ;
+; servo_pwm4:servo_pwm4_map|degrees[30]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[30] ;
+; servo_pwm2:servo_pwm2_map|degrees[31]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[31] ;
+; servo_pwm3:servo_pwm3_map|degrees[31]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[31] ;
+; servo_pwm4:servo_pwm4_map|degrees[31]   ; Merged with servo_pwm1:servo_pwm1_map|degrees[31] ;
+; servo_pwm2:servo_pwm2_map|Ticks[0]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[0]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[0]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[0]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[0]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[0]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[1]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[1]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[1]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[1]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[1]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[1]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[2]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[2]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[2]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[2]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[2]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[2]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[3]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[3]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[3]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[3]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[3]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[3]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[4]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[4]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[4]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[4]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[4]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[4]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[5]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[5]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[5]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[5]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[5]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[5]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[6]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[6]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[6]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[6]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[6]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[6]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[7]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[7]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[7]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[7]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[7]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[7]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[8]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[8]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[8]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[8]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[8]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[8]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[9]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[9]    ;
+; servo_pwm3:servo_pwm3_map|Ticks[9]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[9]    ;
+; servo_pwm4:servo_pwm4_map|Ticks[9]      ; Merged with servo_pwm1:servo_pwm1_map|Ticks[9]    ;
+; servo_pwm2:servo_pwm2_map|Ticks[10]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[10]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[10]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[10]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[10]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[10]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[11]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[11]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[11]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[11]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[11]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[11]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[12]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[12]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[12]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[12]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[12]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[12]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[13]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[13]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[13]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[13]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[13]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[13]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[14]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[14]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[14]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[14]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[14]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[14]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[15]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[15]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[15]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[15]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[15]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[15]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[16]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[16]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[16]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[16]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[16]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[16]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[17]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[17]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[17]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[17]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[17]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[17]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[18]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[18]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[18]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[18]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[18]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[18]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[19]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[19]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[19]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[19]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[19]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[19]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[20]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[20]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[20]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[20]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[20]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[20]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[21]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[21]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[21]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[21]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[21]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[21]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[22]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[22]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[22]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[22]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[22]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[22]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[23]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[23]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[23]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[23]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[23]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[23]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[24]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[24]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[24]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[24]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[24]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[24]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[25]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[25]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[25]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[25]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[25]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[25]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[26]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[26]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[26]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[26]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[26]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[26]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[27]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[27]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[27]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[27]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[27]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[27]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[28]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[28]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[28]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[28]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[28]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[28]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[29]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[29]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[29]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[29]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[29]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[29]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[30]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[30]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[30]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[30]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[30]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[30]   ;
+; servo_pwm2:servo_pwm2_map|Ticks[31]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[31]   ;
+; servo_pwm3:servo_pwm3_map|Ticks[31]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[31]   ;
+; servo_pwm4:servo_pwm4_map|Ticks[31]     ; Merged with servo_pwm1:servo_pwm1_map|Ticks[31]   ;
+; Total Number of Removed Registers = 192 ;                                                   ;
++-----------------------------------------+---------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -329,8 +480,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 166   ;
-; Number of registers using Synchronous Clear  ; 69    ;
+; Total registers                              ; 326   ;
+; Number of registers using Synchronous Clear  ; 197   ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -344,42 +495,68 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; servo_pwm1:servo_pwm1_map|degrees[31]  ; 4       ;
+; servo_pwm1:servo_pwm1_map|degrees[31]  ; 6       ;
 ; servo_pwm1:servo_pwm1_map|degrees[0]   ; 2       ;
 ; servo_pwm1:servo_pwm1_map|Ticks[0]     ; 2       ;
 ; servo_pwm1:servo_pwm1_map|Ticks[31]    ; 2       ;
 ; Timer:Timer_map|Ticks[0]               ; 2       ;
 ; Timer:Timer_map|Ticks[31]              ; 2       ;
-; Total number of inverted registers = 6 ;         ;
+; TimerAlt:TimerAlt_map|Ticks[0]         ; 2       ;
+; TimerAlt:TimerAlt_map|Ticks[31]        ; 2       ;
+; Total number of inverted registers = 8 ;         ;
 +----------------------------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
-; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|Ticks[30]   ;
-; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|Timer:Timer_map|Ticks[23]             ;
-; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|degrees[30] ;
-; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |Crazy_Machine|Timer:Timer_map|Millis[7]~reg0        ;
-; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; Yes        ; |Crazy_Machine|Timer:Timer_map|Seconds[10]~reg0      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|Ticks[31]   ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|Timer:Timer_map|Ticks[0]              ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|degrees[31] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|Ticks[12]    ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|Timer:Timer_map|Ticks[12]              ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|TimerAlt:TimerAlt_map|Ticks[26]        ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|degrees[2]   ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |Crazy_Machine|Timer:Timer_map|Millis[5]~reg0         ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |Crazy_Machine|TimerAlt:TimerAlt_map|Millis[30]~reg0  ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; Yes        ; |Crazy_Machine|Timer:Timer_map|Seconds[9]~reg0        ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; Yes        ; |Crazy_Machine|TimerAlt:TimerAlt_map|Seconds[20]~reg0 ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |Crazy_Machine|Timer:Timer_map|Minutes[5]~reg0        ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |Crazy_Machine|TimerAlt:TimerAlt_map|Minutes[10]~reg0 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|Ticks[0]     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|Timer:Timer_map|Ticks[0]               ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|TimerAlt:TimerAlt_map|Ticks[31]        ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crazy_Machine|servo_pwm1:servo_pwm1_map|degrees[0]   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "servo_pwm4:servo_pwm4_map" ;
++------------+-------+----------+-----------------------+
+; Port       ; Type  ; Severity ; Details               ;
++------------+-------+----------+-----------------------+
+; pos4[1..0] ; Input ; Info     ; Stuck at GND          ;
+; pos4[5]    ; Input ; Info     ; Stuck at VCC          ;
++------------+-------+----------+-----------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "servo_pwm3:servo_pwm3_map" ;
++------------+-------+----------+-----------------------+
+; Port       ; Type  ; Severity ; Details               ;
++------------+-------+----------+-----------------------+
+; pos3[1..0] ; Input ; Info     ; Stuck at GND          ;
++------------+-------+----------+-----------------------+
 
 
 +-------------------------------------------------------+
 ; Port Connectivity Checks: "servo_pwm2:servo_pwm2_map" ;
-+---------+-------+----------+--------------------------+
-; Port    ; Type  ; Severity ; Details                  ;
-+---------+-------+----------+--------------------------+
-; pos2[7] ; Input ; Info     ; Stuck at GND             ;
-; pos2[5] ; Input ; Info     ; Stuck at GND             ;
-; pos2[2] ; Input ; Info     ; Stuck at GND             ;
-; pos2[0] ; Input ; Info     ; Stuck at GND             ;
-+---------+-------+----------+--------------------------+
++------------+-------+----------+-----------------------+
+; Port       ; Type  ; Severity ; Details               ;
++------------+-------+----------+-----------------------+
+; pos2[2..0] ; Input ; Info     ; Stuck at GND          ;
+; pos2[7]    ; Input ; Info     ; Stuck at GND          ;
+; pos2[4]    ; Input ; Info     ; Stuck at GND          ;
++------------+-------+----------+-----------------------+
 
 
 +-------------------------------------------------------+
@@ -388,20 +565,28 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Port    ; Type  ; Severity ; Details                  ;
 +---------+-------+----------+--------------------------+
 ; pos1[7] ; Input ; Info     ; Stuck at GND             ;
-; pos1[5] ; Input ; Info     ; Stuck at GND             ;
+; pos1[5] ; Input ; Info     ; Stuck at VCC             ;
 ; pos1[2] ; Input ; Info     ; Stuck at GND             ;
 ; pos1[0] ; Input ; Info     ; Stuck at GND             ;
 +---------+-------+----------+--------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "Timer:Timer_map"                                                                      ;
-+---------+-------+----------+-------------------------------------------------------------------------------------+
-; Port    ; Type  ; Severity ; Details                                                                             ;
-+---------+-------+----------+-------------------------------------------------------------------------------------+
-; millis  ; Bidir ; Warning  ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; minutes ; Bidir ; Warning  ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------+-------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "TimerAlt:TimerAlt_map"                                                               ;
++--------+-------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                             ;
++--------+-------+----------+-------------------------------------------------------------------------------------+
+; millis ; Bidir ; Warning  ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+-------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Timer:Timer_map"                                                                     ;
++--------+-------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                             ;
++--------+-------+----------+-------------------------------------------------------------------------------------+
+; millis ; Bidir ; Warning  ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+-------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -409,7 +594,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -418,42 +603,125 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
-    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu May 23 20:04:25 2019
+    Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
+    Info: Processing started: Fri May 31 13:56:45 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Crazy_Machine -c Crazy_Machine
-Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
-Info (12021): Found 2 design units, including 1 entities, in source file servo_pwm2.vhd
-    Info (12022): Found design unit 1: servo_pwm2-rtl
-    Info (12023): Found entity 1: servo_pwm2
+Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file servo_pwm1.vhd
     Info (12022): Found design unit 1: servo_pwm1-rtl
     Info (12023): Found entity 1: servo_pwm1
+Info (12021): Found 2 design units, including 1 entities, in source file servo_pwm2.vhd
+    Info (12022): Found design unit 1: servo_pwm2-rtl
+    Info (12023): Found entity 1: servo_pwm2
 Info (12021): Found 2 design units, including 1 entities, in source file clk50hz.vhd
     Info (12022): Found design unit 1: clk50Hz-Behavioral
     Info (12023): Found entity 1: clk50Hz
 Info (12021): Found 2 design units, including 1 entities, in source file timer.vhd
     Info (12022): Found design unit 1: Timer-rtl
     Info (12023): Found entity 1: Timer
-Info (12021): Found 2 design units, including 1 entities, in source file crazy_machine.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file servo_pwm3.vhd
+    Info (12022): Found design unit 1: servo_pwm3-rtl
+    Info (12023): Found entity 1: servo_pwm3
+Info (12021): Found 2 design units, including 1 entities, in source file servo_pwm4.vhd
+    Info (12022): Found design unit 1: servo_pwm4-rtl
+    Info (12023): Found entity 1: servo_pwm4
+Info (12021): Found 2 design units, including 1 entities, in source file timeralt.vhd
+    Info (12022): Found design unit 1: TimerAlt-rtl
+    Info (12023): Found entity 1: TimerAlt
+Warning (12125): Using design file crazy_machine.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
     Info (12022): Found design unit 1: Crazy_Machine-BEHAVIOR
     Info (12023): Found entity 1: Crazy_Machine
 Info (12127): Elaborating entity "Crazy_Machine" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at Crazy_Machine.vhd(152): signal "Seconds" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Crazy_Machine.vhd(157): signal "started" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Crazy_Machine.vhd(176): signal "Seconds" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at Crazy_Machine.vhd(105): inferring latch(es) for signal or variable "started", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "started" at Crazy_Machine.vhd(105)
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(231): signal "Seconds" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(231): signal "Minutes" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(258): signal "SecondsAlt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(258): signal "MinutesAlt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(285): signal "Seconds" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(285): signal "Minutes" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(336): signal "Seconds" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at crazy_machine.vhd(336): signal "Minutes" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at crazy_machine.vhd(153): inferring latch(es) for signal or variable "pos2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at crazy_machine.vhd(153): inferring latch(es) for signal or variable "pos1", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at crazy_machine.vhd(153): inferring latch(es) for signal or variable "pos3", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at crazy_machine.vhd(153): inferring latch(es) for signal or variable "pos4", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "pos4[0]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[1]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[2]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[3]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[4]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[5]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[6]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[7]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos4[8]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[0]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[1]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[2]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[3]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[4]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[5]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[6]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[7]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos3[8]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[0]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[1]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[2]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[3]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[4]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[5]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[6]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[7]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos1[8]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[0]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[1]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[2]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[3]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[4]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[5]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[6]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[7]" at crazy_machine.vhd(153)
+Info (10041): Inferred latch for "pos2[8]" at crazy_machine.vhd(153)
 Info (12128): Elaborating entity "Timer" for hierarchy "Timer:Timer_map"
+Info (12128): Elaborating entity "TimerAlt" for hierarchy "TimerAlt:TimerAlt_map"
 Info (12128): Elaborating entity "servo_pwm1" for hierarchy "servo_pwm1:servo_pwm1_map"
 Info (12128): Elaborating entity "servo_pwm2" for hierarchy "servo_pwm2:servo_pwm2_map"
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (13012): Latch started has unsafe behavior
+Info (12128): Elaborating entity "servo_pwm3" for hierarchy "servo_pwm3:servo_pwm3_map"
+Info (12128): Elaborating entity "servo_pwm4" for hierarchy "servo_pwm4:servo_pwm4_map"
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "pos1[6]" merged with LATCH primitive "pos1[8]"
+    Info (13026): Duplicate LATCH primitive "pos1[3]" merged with LATCH primitive "pos1[8]"
+    Info (13026): Duplicate LATCH primitive "pos1[1]" merged with LATCH primitive "pos1[4]"
+    Info (13026): Duplicate LATCH primitive "pos2[6]" merged with LATCH primitive "pos2[8]"
+    Info (13026): Duplicate LATCH primitive "pos2[5]" merged with LATCH primitive "pos2[8]"
+    Info (13026): Duplicate LATCH primitive "pos2[3]" merged with LATCH primitive "pos2[8]"
+    Info (13026): Duplicate LATCH primitive "pos3[6]" merged with LATCH primitive "pos3[8]"
+    Info (13026): Duplicate LATCH primitive "pos3[3]" merged with LATCH primitive "pos3[8]"
+    Info (13026): Duplicate LATCH primitive "pos3[2]" merged with LATCH primitive "pos3[7]"
+    Info (13026): Duplicate LATCH primitive "pos3[4]" merged with LATCH primitive "pos3[7]"
+    Info (13026): Duplicate LATCH primitive "pos4[6]" merged with LATCH primitive "pos4[8]"
+    Info (13026): Duplicate LATCH primitive "pos4[3]" merged with LATCH primitive "pos4[8]"
+    Info (13026): Duplicate LATCH primitive "pos4[2]" merged with LATCH primitive "pos4[7]"
+    Info (13026): Duplicate LATCH primitive "pos4[4]" merged with LATCH primitive "pos4[7]"
+Warning (13012): Latch pos1[8] has unsafe behavior
     Warning (13013): Ports D and ENA on the latch are fed by the same signal fstate.State001
+Warning (13012): Latch pos1[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal fstate.State001
+Warning (13012): Latch pos2[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal fstate.State010
+Warning (13012): Latch pos3[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Timer:Timer_map|Seconds[31]~reg0
+Warning (13012): Latch pos3[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Timer:Timer_map|Seconds[31]~reg0
+Warning (13012): Latch pos3[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal Timer:Timer_map|Seconds[31]~reg0
+Warning (13012): Latch pos4[8] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal fstate.State011
+Warning (13012): Latch pos4[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal fstate.State101
 Info (286030): Timing-Driven Synthesis is running
 Warning (20013): Ignored assignments for entity "DE0_Default" -- entity does not exist in design
     Warning (20014): Assignment for entity set_global_assignment -name LL_ROOT_REGION ON -entity DE0_Default -section_id "Root Region" was ignored
     Warning (20014): Assignment for entity set_global_assignment -name LL_MEMBER_STATE LOCKED -entity DE0_Default -section_id "Root Region" was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name LL_ROUTING_REGION OFF -entity DE0_Default -section_id "Root Region" was ignored
     Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_PRESERVE_HIGH_SPEED_TILES ON -entity DE0_Default -section_id Top was ignored
@@ -462,7 +730,7 @@ Warning (20013): Ignored assignments for entity "DE0_Default" -- entity does not
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 14622752 -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity DE0_Default -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity DE0_Default -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS REPLACE_CONFLICTING -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity DE0_Default -section_id Top was ignored
@@ -476,7 +744,6 @@ Warning (20013): Ignored assignments for entity "DE0_Default" -- entity does not
     Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity DE0_Default -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity DE0_Default -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity DE0_Default -section_id Top was ignored
 Warning (20013): Ignored assignments for entity "lights" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity lights -section_id Top was ignored
@@ -487,7 +754,7 @@ Warning (20013): Ignored assignments for entity "lights" -- entity does not exis
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_COLOR 16764057 -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_ASSIGNMENTS ON -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_ASSIGNMENTS REPLACE_CONFLICTING -entity lights -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS UPDATE_CONFLICTING -entity lights -section_id Top was ignored
+    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_EXISTING_LOGICLOCK_REGIONS REPLACE_CONFLICTING -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PIN_ASSIGNMENTS ON -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_IMPORT_PROMOTE_ASSIGNMENTS ON -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_TYPE STANDARD_PARTITION -entity lights -section_id Top was ignored
@@ -501,17 +768,19 @@ Warning (20013): Ignored assignments for entity "lights" -- entity does not exis
     Warning (20014): Assignment for entity set_global_assignment -name MERGE_EQUIVALENT_BIDIRS ON -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name ABSORB_PATHS_FROM_OUTPUTS_TO_INPUTS ON -entity lights -section_id Top was ignored
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_EXTRACT_HARD_BLOCK_NODES ON -entity lights -section_id Top was ignored
-    Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity lights -section_id Top was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 358 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 6 input pins
-    Info (21059): Implemented 11 output pins
-    Info (21061): Implemented 341 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 59 warnings
-    Info: Peak virtual memory: 4692 megabytes
-    Info: Processing ended: Thu May 23 20:04:27 2019
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "sw9"
+    Warning (15610): No output dependent on input pin "sw8"
+Info (21057): Implemented 675 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
+    Info (21059): Implemented 13 output pins
+    Info (21061): Implemented 654 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 83 warnings
+    Info: Peak virtual memory: 4659 megabytes
+    Info: Processing ended: Fri May 31 13:57:04 2019
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:17
 
 

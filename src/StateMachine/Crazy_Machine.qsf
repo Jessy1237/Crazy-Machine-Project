@@ -41,12 +41,13 @@ set_global_assignment -name DEVICE EP3C16F484C6
 set_global_assignment -name TOP_LEVEL_ENTITY Crazy_Machine
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 12.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:17:37  APRIL 10, 2019"
-set_global_assignment -name LAST_QUARTUS_VERSION 13.1
+set_global_assignment -name LAST_QUARTUS_VERSION 12.1
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name SMF_FILE Crazy_Machine.smf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity DE0_Default -section_id Top
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity DE0_Default -section_id Top
 set_global_assignment -name PARTITION_COLOR 14622752 -entity DE0_Default -section_id Top
@@ -73,18 +74,20 @@ set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_location_assignment PIN_T8 -to StateBit_1
 set_location_assignment PIN_W7 -to StateBit_2
 set_location_assignment PIN_V5 -to StateBit_3
-set_location_assignment PIN_AA15 -to Ppad1_I
-set_location_assignment PIN_AB13 -to Ppad2_I
-set_location_assignment PIN_F1 -to but2
-set_location_assignment PIN_AA14 -to Button_1
-set_location_assignment PIN_AB10 -to Ppad3_I
-set_location_assignment PIN_U7 -to servo1
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name VHDL_FILE servo_pwm2.vhd
+set_location_assignment PIN_AB14 -to Ppad1_I
+set_location_assignment PIN_AA16 -to Ppad2_I
+set_location_assignment PIN_AB15 -to Button_1
+set_location_assignment PIN_AB16 -to Ppad3_I
 set_global_assignment -name VHDL_FILE servo_pwm1.vhd
+set_location_assignment PIN_U7 -to servo1
+set_global_assignment -name VHDL_FILE servo_pwm2.vhd
+set_location_assignment PIN_W6 -to servo2
 set_global_assignment -name VHDL_FILE clk50Hz.vhd
 set_global_assignment -name VHDL_FILE Timer.vhd
-set_global_assignment -name VHDL_FILE Crazy_Machine.vhd
-set_global_assignment -name SMF_FILE Crazy_Machine.smf
+set_location_assignment PIN_B12 -to clk
+set_global_assignment -name VHDL_FILE servo_pwm3.vhd
+set_global_assignment -name VHDL_FILE servo_pwm4.vhd
+set_location_assignment PIN_V8 -to servo3
+set_location_assignment PIN_W10 -to servo4
+set_global_assignment -name VHDL_FILE TimerAlt.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

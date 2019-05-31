@@ -31,7 +31,7 @@ begin
             else
  
                 -- True once every millisecond
-                if Ticks = 49999 then
+                if Ticks = 49999 then --49999
                     Ticks <= 0;
 							
 							if Millis = 999 then

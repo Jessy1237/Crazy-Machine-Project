@@ -6,7 +6,7 @@ entity Timer is
 port(
     clk     : in std_logic;
     reset    : in std_logic; -- Negative reset
-	 Millis : in integer;
+	 Millis : inout integer;
     Seconds : inout integer;
     Minutes : inout integer);
 end entity;
@@ -28,10 +28,9 @@ begin
 					 Millis <= 0;
                 Seconds <= 0;
                 Minutes <= 0;
-                Hours   <= 0;
             else
  
-                -- True once every second
+                -- True once every millisecond
                 if Ticks = 49999 then
                     Ticks <= 0;
 							
