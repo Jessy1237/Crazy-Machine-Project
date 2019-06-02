@@ -1,5 +1,6 @@
 #include "LedExtended.h"
 #include "Music.h"
+#include <Stepper.h>
 
 //LED Matrix Pins
 #define DATA_PIN A0
@@ -12,6 +13,18 @@
 #define STATE_PIN0 A3
 #define STATE_PIN1 A4
 #define STATE_PIN2 A5
+
+//Motor pins
+#define MOTOR_PIN0 4
+#define MOTOR_PIN1 3
+#define MOTOR_PIN2 10
+#define MOTOR_PIN3 5
+
+#define STEPS_PER_REVOLUTION 200
+#define ROTATIONS_PER_SECOND 2
+
+#define ELEVATOR_START 20
+#define ELEVATOR_END 23
 
 #define WELCOME_MSG "Welcome to super mario world!"
 #define PRESS_START_MSG "Press START to Play"
@@ -33,6 +46,8 @@ void elevatorToFunnelState(short state, short prevState);
 void funnelState(short state, short prevState);
 void finalElevatorState(short state, short prevState);
 void finishedState(short state, short prevState);
+
+Stepper myStepper(STEPS_PER_REVOLUTION, MOTOR_PIN0, MOTOR_PIN1, MOTOR_PIN2, MOTOR_PIN3);
 
 void setup()
 {
@@ -56,6 +71,8 @@ void setup()
   pinMode(STATE_PIN0, INPUT);
   pinMode(STATE_PIN1, INPUT);
   pinMode(STATE_PIN2, INPUT);
+
+  myStepper.setSpeed(ROTATIONS_PER_SECOND * 60);
 }
 
 void loop()
@@ -185,6 +202,11 @@ void elevatorToFunnelState(short state, short prevState)
     playMusic(UNDERGROUND);
   }
 
+  if (numCycles >= ELEVATOR_START && numCycles <= ELEVATOR_END)
+  {
+    myStepper.step(STEPS_PER_REVOLUTION);
+  }
+
   lc.displayPlayerStats(numLifes, numCoins);
 }
 
@@ -195,6 +217,11 @@ void funnelState(short state, short prevState)
     stopMusic();
     numCycles = 0;
     lc.clearAll();
+  }
+
+  if (numCycles >= 0 && numCycles <= ELEVATOR_END - ELEVATOR_START)
+  {
+    myStepper.step(-STEPS_PER_REVOLUTION);
   }
 
   if (numCycles == 10)
@@ -226,6 +253,11 @@ void finalElevatorState(short state, short prevState)
     lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
   }
 
+  if (numCycles >= ELEVATOR_START && numCycles <= ELEVATOR_END)
+  {
+    myStepper.step(STEPS_PER_REVOLUTION);
+  }
+
   if (numCycles == 25) //Possibly combine this music file with the so long bowser
   {
     stopMusic();
@@ -242,6 +274,11 @@ void finishedState(short state, short prevState)
     numCycles = 0;
     displayString = CONGRATS_MSG;
     lc.clearAll();
+  }
+
+  if (numCycles >= 0 && numCycles <= ELEVATOR_END - ELEVATOR_START)
+  {
+    myStepper.step(-STEPS_PER_REVOLUTION);
   }
 
   lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
