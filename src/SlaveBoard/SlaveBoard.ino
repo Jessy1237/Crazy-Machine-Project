@@ -7,7 +7,7 @@
 #define CS_PIN  A1
 #define CLK_PIN A2
 #define NBR_MTX 4 //number of matrices attached is one
-#define LED_DELAY 69
+#define LED_DELAY 23
 
 //State pins
 #define STATE_PIN0 A3
@@ -21,10 +21,11 @@
 #define MOTOR_PIN3 5
 
 #define STEPS_PER_REVOLUTION 200
+#define STEPS_PER_CYCLE 10
 #define ROTATIONS_PER_SECOND 2
 
 #define ELEVATOR_START 20
-#define ELEVATOR_END 23
+#define ELEVATOR_END 110
 
 #define WELCOME_MSG "Welcome to super mario world!"
 #define PRESS_START_MSG "Press START to Play"
@@ -34,7 +35,7 @@ LedControlExtended lc = LedControlExtended(DATA_PIN, CLK_PIN, CS_PIN, NBR_MTX);
 char* displayString = NULL;
 
 short prevState = -1;
-short state = 0;
+//short state = 0;
 long numCycles = 0;
 short numCoins = 0;
 short numLifes = 2;
@@ -72,12 +73,18 @@ void setup()
   pinMode(STATE_PIN1, INPUT);
   pinMode(STATE_PIN2, INPUT);
 
+  //Serial.begin(9600);
   myStepper.setSpeed(ROTATIONS_PER_SECOND * 60);
 }
 
 void loop()
 {
   short state = digitalRead(STATE_PIN2) * 4 + digitalRead(STATE_PIN1) * 2 + digitalRead(STATE_PIN0);
+//Serial.println(state);
+//if(Serial.available() > 0)
+//{
+  //state = Serial.parseInt();
+//}
 
   switch (state)
   {
@@ -125,7 +132,7 @@ void neutralState(short state, short prevState)
     lc.clearAll();
   }
 
-  if (numCycles == 40)
+  if (numCycles == 80)
   {
     playMusic(PRESS_START_TO_PLAY);
     //Serial.print("Playing sound\n");
@@ -147,11 +154,11 @@ void aboveToUndergroundState(short state, short prevState)
     lc.clearAll();
   }
 
-  if (numCycles == 12)
+  if (numCycles == 24)
   {
     playMusic(WARP_PIPE);
   }
-  else if (numCycles == 22)
+  else if (numCycles == 50)
   {
     playMusic(UNDERGROUND);
   }
@@ -169,13 +176,13 @@ void superStarState(short state, short prevState)
     lc.clearAll();
   }
 
-  if (numCycles == 13)
+  if (numCycles == 20)
   {
     stopMusic();
     playMusic(ENEMY_DEATH);
     numCoins++;
   }
-  else if (numCycles == 18)
+  else if (numCycles == 45)
   {
     stopMusic();
     playMusic(SUPER_STAR);
@@ -196,7 +203,7 @@ void elevatorToFunnelState(short state, short prevState)
     lc.clearAll();
   }
 
-  if (numCycles == 5)
+  if (numCycles == 15)
   {
     stopMusic();
     playMusic(UNDERGROUND);
@@ -204,7 +211,7 @@ void elevatorToFunnelState(short state, short prevState)
 
   if (numCycles >= ELEVATOR_START && numCycles <= ELEVATOR_END)
   {
-    myStepper.step(STEPS_PER_REVOLUTION);
+    myStepper.step(STEPS_PER_CYCLE);
   }
 
   lc.displayPlayerStats(numLifes, numCoins);
@@ -221,14 +228,14 @@ void funnelState(short state, short prevState)
 
   if (numCycles >= 0 && numCycles <= ELEVATOR_END - ELEVATOR_START)
   {
-    myStepper.step(-STEPS_PER_REVOLUTION);
+    myStepper.step(-STEPS_PER_CYCLE);
   }
 
-  if (numCycles == 10)
+  if (numCycles == 30)
   {
     playMusic(WAAH);
   }
-  else if (numCycles == 300)
+  else if (numCycles == 450)
   {
     stopMusic();
     playMusic(OOF);
@@ -248,17 +255,17 @@ void finalElevatorState(short state, short prevState)
     lc.clearAll();
   }
 
-  if (numCycles >= 10)
+  if (numCycles >= 30)
   {
     lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
   }
 
   if (numCycles >= ELEVATOR_START && numCycles <= ELEVATOR_END)
   {
-    myStepper.step(STEPS_PER_REVOLUTION);
+    myStepper.step(STEPS_PER_CYCLE);
   }
 
-  if (numCycles == 25) //Possibly combine this music file with the so long bowser
+  if (numCycles == 55) //Possibly combine this music file with the so long bowser
   {
     stopMusic();
     playMusic(OUTRO);
@@ -278,7 +285,7 @@ void finishedState(short state, short prevState)
 
   if (numCycles >= 0 && numCycles <= ELEVATOR_END - ELEVATOR_START)
   {
-    myStepper.step(-STEPS_PER_REVOLUTION);
+    myStepper.step(-STEPS_PER_CYCLE);
   }
 
   lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
