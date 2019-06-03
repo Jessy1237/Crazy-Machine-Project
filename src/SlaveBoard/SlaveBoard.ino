@@ -24,8 +24,8 @@
 #define STEPS_PER_CYCLE 10
 #define ROTATIONS_PER_SECOND 2
 
-#define ELEVATOR_START 20
-#define ELEVATOR_END 110
+#define ELEVATOR_START 105
+#define ELEVATOR_END 198
 
 #define WELCOME_MSG "Welcome to super mario world!"
 #define PRESS_START_MSG "Press START to Play"
@@ -176,13 +176,13 @@ void superStarState(short state, short prevState)
     lc.clearAll();
   }
 
-  if (numCycles == 20)
+  if (numCycles == 16)
   {
     stopMusic();
     playMusic(ENEMY_DEATH);
     numCoins++;
   }
-  else if (numCycles == 45)
+  else if (numCycles == 31)
   {
     stopMusic();
     playMusic(SUPER_STAR);
@@ -235,7 +235,7 @@ void funnelState(short state, short prevState)
   {
     playMusic(WAAH);
   }
-  else if (numCycles == 450)
+  else if (numCycles == 250)
   {
     stopMusic();
     playMusic(OOF);
@@ -259,13 +259,17 @@ void finalElevatorState(short state, short prevState)
   {
     lc.writeScrollingString(0, NBR_MTX, displayString, LED_DELAY);
   }
+  else
+  {
+     lc.displayPlayerStats(numLifes, numCoins);
+  }
 
   if (numCycles >= ELEVATOR_START && numCycles <= ELEVATOR_END)
   {
     myStepper.step(STEPS_PER_CYCLE);
   }
 
-  if (numCycles == 55) //Possibly combine this music file with the so long bowser
+  if (numCycles == ELEVATOR_START + 5) //Possibly combine this music file with the so long bowser
   {
     stopMusic();
     playMusic(OUTRO);
